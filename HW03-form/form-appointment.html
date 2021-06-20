@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+
+    <style>
+        div{
+            width: 700px;
+            margin: auto;
+        }
+        h2{
+            text-align: center;
+            font-size: 30px;
+            margin: 10px;
+        }
+        table{
+            margin: auto;
+            width: 100%;
+            border-collapse: separate;
+        }
+        .doctor{
+            margin-bottom: 10px;
+            border-top: 1px solid #247c98;
+        }
+        .doctor th:nth-of-type(n+2){
+            border-left: 1px solid #247c98;
+        }
+        .data{
+            text-align: left;
+            border-top: 1px solid #247c98;
+        }
+        caption{
+            margin: 10px;
+            font-size: 20px;
+        }
+        th, tr, td{
+            padding: 10px;
+        }
+        th{
+            font-weight: bold;
+        }
+        .data th, td:nth-of-type(n+2){
+            border-left:1px solid white;
+        }
+        tr:nth-child(even){
+            background-color: rgb(157, 199, 195);
+        }
+        .important{
+            color: red;
+        }
+        [type="submit"], [type="button"]{
+            margin: 0 10px;
+        }
+        .data tr:last-of-type td{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>--網路掛號--</h2>
+        <table class="doctor">
+            <caption>掛號預約內容</caption>
+            <thead>
+                <tr>
+                    <th>預約日期</th>
+                    <th>午別</th>
+                    <th>科別</th>
+                    <th>診間</th>
+                    <th>醫師</th>
+                </tr>
+                <tr>
+                    <td>2021/06/29(星期二)</td>
+                    <td>上午</td>
+                    <td>心臟血管內科</td>
+                    <td>三診</td>
+                    <td>XXX</td>
+                </tr>
+            </thead>
+        </table>
+        <form action="">
+            <table class="data">
+                <caption>依基本資料</caption>
+                <tbody>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>掛號類型：</th>
+                        <td>
+                            <label>
+                                <input type="radio" name="times">
+                                初診(未曾在本院看過病者)
+                            </label>
+                            <label>
+                                <input type="radio" name="times">
+                                複診
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>國別：</th>
+                        <td>
+                            <select name="" id="">
+                                <option value="native">本國</option>
+                                <option value="foreign">外國</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>身分證號：</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>生日：</th>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>姓名：</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>性別：</th>
+                        <td>
+                            <label>
+                                <input type="radio" name="sex">
+                                男性
+                            </label>
+                            <label>
+                                <input type="radio" name="sex">
+                                女性
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>聯絡電話：</th>
+                        <td><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>住址：</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <th>婚姻狀況：</th>
+                        <td>
+                            <label>
+                                <input type="radio" name="marriage">
+                                未婚
+                            </label>
+                            <label>
+                                <input type="radio" name="marriage">
+                                已婚
+                            </label>
+                            <label>
+                                <input type="radio" name="marriage">
+                                離婚
+                            </label>
+                            <label>
+                                <input type="radio" name="marriage">
+                                喪偶
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <th>電子信箱：</th>
+                        <td><input type="email"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <th>是否需特殊服務：</th>
+                        <td>
+                            <label>
+                                <input type="radio" name="service">
+                                不需要
+                            </label>
+                            <label>
+                                <input type="radio" name="service">
+                                視障服務
+                            </label>
+                            <label>
+                                <input type="radio" name="service">
+                                聽障服務
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="important">*</td>
+                        <th>驗證碼：</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <input type="submit" value="確認掛號">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
