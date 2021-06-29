@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="grid.css">
     <style>
         body {
-            padding-top: 115px;
+            padding-top: 60px;
         }
 
         div {
@@ -26,9 +26,31 @@
             left: 0;
             z-index: 1;
             box-shadow: 0 0 5px rgb(36 50 66 / 20%);
+            background-color: white;
         }
 
-        .header-top {
+        .header a {
+            display: inline-block;
+            /* line-height: 150px; */
+            padding: 20px 0;
+            margin-left: 20px;
+        }
+
+        .header img {
+            width: 130px;
+        }
+
+        .header-md {
+            display: none;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 0 0 5px rgb(36 50 66 / 20%);
+        }
+
+        .header-md-top {
             height: 40px;
             background-color: #00142d;
             font-size: 0;
@@ -36,37 +58,37 @@
             padding-right: 40px;
         }
 
-        .header-top li {
+        .header-md-top li {
             display: inline-block;
             padding: 3px 0 3px 20px;
             margin-top: 10px;
         }
 
-        .header-top li:first-child {
+        .header-md-top li:first-child {
             padding-right: 20px;
             border-right: 1px solid #748094;
         }
 
-        .header-top a {
+        .header-md-top a {
             font-size: 14px;
             text-decoration: none;
             color: white;
         }
 
-        .header-top a:hover {
+        .header-md-top a:hover {
             color: #0061FF;
         }
 
-        .header-bottom {
+        .header-md-bottom {
             background-color: white;
             font-size: 0;
         }
 
-        .header-bottom img {
+        .header-md-bottom img {
             width: 160px;
         }
 
-        .header-bottom :not(:first-child) {
+        .header-md-bottom :not(:first-child) {
             display: inline-block;
             padding: 30px 10px;
             font-size: 15px;
@@ -75,21 +97,21 @@
             box-sizing: border-box;
         }
 
-        .header-bottom :not(:last-child):hover {
+        .header-md-bottom :not(:last-child):hover {
             color: #0061FF;
         }
 
-        .header-bottom a:nth-child(2) {
+        .header-md-bottom a:nth-child(2) {
             margin-left: 280px;
         }
 
-        .header-bottom a:first-child {
+        .header-md-bottom a:first-child {
             position: absolute;
             top: 65px;
             left: 60px;
         }
 
-        .header-bottom a:last-child {
+        .header-md-bottom a:last-child {
             padding: 10px 18px;
             background-color: #0061FF;
             border-radius: 30px;
@@ -100,21 +122,37 @@
             right: 60px;
         }
 
-        .header-bottom a:last-child:hover, .button:hover {
+        .header-md-bottom a:last-child:hover, .button:hover {
             /*header-bottom的免費使用按鈕，層級比樓上低，用.button會沒有作用，只好全打出來*/
             background-color: #0747a6;
             color: rgb(216, 216, 216);
             cursor: pointer;
         }
 
+        @media screen and (min-width: 992px) {
+            body {
+                padding-top: 115px;
+            }
+            .header {
+                display: none;
+            }
+            .header-md {
+                display: block;
+            }
+        }
+
         /* home */
         .home {
-            max-width: none;
+            width: 100%;
             /* height: 700px; */
             background-image: url(home-background.png);
             background-position: center;
             background-size: cover;
             /* align-items: center; */
+        }
+
+        .home .container {
+            max-width: none;
         }
 
         .home .row {
@@ -171,6 +209,7 @@
         .home img {
             width: 100%;
         }
+
 
         /* intro */
         .intro {
@@ -281,17 +320,17 @@
         }
 
         .service .container {
-            max-width: 1100px;
+            max-width: 1200px;
         }
 
-        .service-item-group {
-            /* display: flex; */
-            /* flex-wrap: wrap; */
-            /* width: 1100px; */
-            /* margin: auto; */
+        /* .service-item-group {
+            display: flex;
+            flex-wrap: wrap;
+            width: 1100px;
+            margin: auto;
             justify-content: space-between;
-            /* border: 1px solid black; */
-        }
+            border: 1px solid black;
+        } */
 
         .service-item {
             width: 300px;
@@ -328,34 +367,43 @@
             margin-left: 25px;
         }
 
+        @media screen and (min-width: 768px) {
+            .service-item-group {
+                justify-content: space-between;
+            }
+        }
 
         /* map */
         .map {
             /* width: 100%; */
-            height: 400px;
             background-image: url(footer-background.png);
             background-repeat: no-repeat;
             background-position: -200px top;
             background-size: 90%;
             background-color: #172B4D;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            /* display: flex; */
+            /* align-items: center; */
         }
 
         .map-txt {
+            padding: 85px 20px;
+        }
+
+        /* .map-txt {
             width: 60%;
             padding-left: 50px;
-        }
+        } */
 
-        .map-pic {
+        /* .map-pic {
             width: 40%;
             height: 100%;
-            overflow: hidden;
             position: relative;
-        }
+            overflow: hidden;
+        } */
 
-        .map-pic img {
+        .map img {
             width: 615px;
             position: absolute;
             right: -140px;
@@ -366,21 +414,21 @@
         .map-txt h4 {
             font-size: 40px;
             color: white;
-            font-weight: bold;
             line-height: 1.5;
             margin-bottom: 60px;
         }
 
         .map-txt a {
             display: inline-block;
-            padding: 15px 120px;
+            width: 340px;
+            padding: 15px 0;
             background-color: #0061FF;
             border-radius: 30px;
             text-decoration: none;
             color: white;
             font-size: 17px;
+            text-align: center;
         }
-
 
         /* footer */
         footer {
@@ -388,21 +436,26 @@
             padding-top: 40px;
         }
 
-        .footer-list-group {
-            width: 1100px;
-            display: flex;
-            justify-content: space-between;
+        .footer {
+            max-width: 1100px;
             padding-top: 40px;
-            margin-left: auto;
-            margin-right: auto;
             margin-bottom: 25px;
             border-top: 2px solid #172B4D;
+        }
+
+        .footer-list-col {
+            width: 100%;
+        }
+
+        .footer-list-col ul {
+            display: none;
         }
 
         .footer-list-col h4 {
             font-size: 18px;
             color: white;
-            margin-bottom: 50px;
+            padding: 10px 0;
+            border-bottom: 1px solid #172B4D;
         }
 
         .footer-list-col li {
@@ -420,11 +473,9 @@
         }
 
         .covid-19-link {
-            width: 1100px;
-            margin: auto;
-            text-align: right;
+            width: 100%;
+            text-align: center;
             padding-bottom: 80px;
-            border-bottom: 2px solid #172B4D;
         }
 
         .covid-19-link a {
@@ -440,15 +491,31 @@
             background-color: #AFCAC7;
         }
 
-        .footer-bottom {
-            width: 1100px;
-            height: 140px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        @media screen and (min-width: 992px) {
+            .footer-list-group {
+                justify-content: space-between;
+            }
+            .footer-list-col ul {
+                display: block;
+            }
+            .footer-list-col {
+                width: calc(100% / 7);
+                padding: 10px;
+            }
+            .footer-list-col h4 {
+                padding-bottom: 50px;
+                border: none;
+            }
+            .covid-19-link {
+                width: 85%;
+                margin: auto;
+                text-align: right;
+            }
         }
 
+        .footer-bottom .row {
+            border-top: 2px solid #172B4D;
+        }
         .footer-bottom-link li {
             display: inline-block;
             padding: 0 5px;
@@ -493,20 +560,44 @@
             color: #748094;
             line-height: 1.5;
         }
+
+        @media screen and (min-width: 992px) {
+            .footer-bottom {
+                width: 90%;
+            }
+            .footer-bottom .row {
+                align-items: center;
+                justify-content: space-between;
+            }
+            .footer-bottom-social {
+                text-align: center;
+            }
+            .footer-bottom-link {
+                order: -1;
+            }
+            .footer-bottom-copyright {
+                text-align: right;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <div class="header-top">
+    <nav class="header">
+        <a href="#"><img src="logo.png" alt="SHOPLINE"></a>
+    </nav>
+
+
+    <div class="header-md">
+        <div class="header-md-top">
             <ul>
                 <li><a href="#"><i class="fas fa-globe"></i></a></li>
                 <li><a href="#">幫助中心</a></li>
                 <li><a href="#">登入網店</a></li>
             </ul>
         </div>
-        <nav class="header-bottom">
+        <nav class="header-md-bottom">
             <a href="#"><img src="logo.png" alt="SHOPLINE"></a>
             <a href="#">開店服務</a>
             <a href="#">方案費用</a>
@@ -520,19 +611,21 @@
     </div>
 
 
-    <div class="home container">
-        <div class="row row-cols-1 row-cols-md-2">
-            <div class="home-pic col">
-                <img src="shopping-car.png" alt="購物車">
-            </div>
-            <div class="home-txt col">
-                <h1>想在哪開店創業？</h1>
-                <h2>社群購物貼近顧客零距離</h2>
-                <p>超過 25 萬品牌使用！從個人賣家到國際品牌，都能以 SHOPLINE 實現全通路零售，快速拓展市場到世界各地，輕鬆開始你的『 店 』商生意！</p>
-                <form action="">
-                    <input type="email" placeholder="請在此輸入電子信箱(可隨時更換)">
-                    <button type="submit" class="button">免費試用</button>
-                </form>
+    <div class="home">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="home-pic col">
+                    <img src="shopping-car.png" alt="購物車">
+                </div>
+                <div class="home-txt col">
+                    <h1>想在哪開店創業？</h1>
+                    <h2>社群購物貼近顧客零距離</h2>
+                    <p>超過 25 萬品牌使用！從個人賣家到國際品牌，都能以 SHOPLINE 實現全通路零售，快速拓展市場到世界各地，輕鬆開始你的『 店 』商生意！</p>
+                    <form action="">
+                        <input type="email" placeholder="請在此輸入電子信箱(可隨時更換)">
+                        <button type="submit" class="button">免費試用</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -611,33 +704,33 @@
     <div class="service">
         <h3>更多功能與服務</h3>
         <div class="container">
-            <div class="service-item-group row">
-                <div class="service-item">
+            <div class="service-item-group row row-cols-2 row-cols-md-3">
+                <div class="service-item col">
                     <div class="service-item-pic"><img src="service-1.png" alt=""></div>
                     <h3>強大庫存及訂單系統</h3>
                     <p>從商品數量、貨況到訂單付款狀態、物流貨態一目瞭然，提升營運效率超有感。</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item col">
                     <div class="service-item-pic"><img src="service-2.png" alt=""></div>
                     <h3>即時化商店業績分析</h3>
                     <p>圖表化報表助你一手掌握商店概況，讓數據助攻企業成長，營運策略更有方向。</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item col">
                     <div class="service-item-pic"><img src="service-3.png" alt=""></div>
                     <h3>多國語系、幣值切換</h3>
                     <p>想做跨境電商也ＯＫ！提供語言、幣別、稅金等進階功能，友善應對海外消費需求。</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item col">
                     <div class="service-item-pic"><img src="service-4.png" alt=""></div>
                     <h3>專業顧問線上支援</h3>
                     <p>迅速、透明的溝通管道，協助你快速解決從線上到線下、從在地到海外的網店疑難。</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item col">
                     <div class="service-item-pic"><img src="service-5.png" alt=""></div>
                     <h3>廣告行銷加值服務</h3>
                     <p>由官方認證的專業投手團隊，協助品牌投遞 Facebook、Google、LINE 等廣告。</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item col">
                     <div class="service-item-pic"><img src="service-6.png" alt=""></div>
                     <h3>老闆專屬成長社群</h3>
                     <p>致力為品牌店家打造能深度交流且互助的生態體系，是拓展人脈、商機的絕佳場域。</p>
@@ -648,106 +741,112 @@
 
 
     <div class="map">
-        <div class="map-txt">
-            <h4>全亞洲超過<br>250,000 個品牌都在使用 SHOPLINE</h4>
-            <a href="#" class="button">免費試用14天</a>
-        </div>
-        <div class="map-pic"><img src="global.png" alt="地球"></div>
+
+                <div class="map-txt">
+                    <h4>全亞洲超過<br>250,000 個品牌都在使用 SHOPLINE</h4>
+                    <a href="#" class="button">免費試用14天</a>
+                </div>
+                <img src="global.png" alt="地球">
+
     </div>
 
 
     <footer>
-        <div class="footer-list-group">
-            <div class="footer-list-col">
-                <h4>SHOPLINE</h4>
-                <ul>
-                    <li><a href="#">關於我們</a></li>
-                    <li><a href="#">認識團隊</a></li>
-                    <li><a href="#">人才招募</a></li>
-                    <li><a href="#">合作機會</a></li>
-                    <li><a href="#">精選夥伴</a></li>
-                    <li><a href="#">媒體報導</a></li>
-                </ul>
-            </div>
-            <div class="footer-list-col">
-                <h4>我要開店</h4>
-                <ul>
-                    <li><a href="#">方案費用</a></li>
-                    <li><a href="#">功能模組</a></li>
-                    <li><a href="#">客戶案例</a></li>
-                    <li><a href="#">開店說明會</a></li>
-                    <li><a href="#">開店諮詢</a></li>
-                </ul>
-            </div>
-            <div class="footer-list-col">
-                <h4>功能特色</h4>
-                <ul>
-                    <li><a href="#">網路開店</a></li>
-                    <li><a href="#">社群服務</a></li>
-                    <li><a href="#">零售POS</a></li>
-                    <li><a href="#">電商物流</a></li>
-                    <li><a href="#">訂單管理</a></li>
-                    <li><a href="#">一頁商店</a></li>
-                </ul>
-            </div>
-            <div class="footer-list-col">
-                <h4>開店資源</h4>
-                <ul>
-                    <li><a href="#">開店秘技</a></li>
-                    <li><a href="#">版型主題</a></li>
-                    <li><a href="#">新手問答</a></li>
-                    <li><a href="#">POS硬體</a></li>
-                </ul>
-            </div>
-            <div class="footer-list-col">
-                <h4>更多解決方案</h4>
-                <ul>
-                    <li><a href="#">企業旗艦方案</a></li>
-                    <li><a href="#">跨境電商方案</a></li>
-                    <li><a href="#">廣告計畫方案</a></li>
-                </ul>
-            </div>
-            <div class="footer-list-col">
-                <h4>其他資源</h4>
-                <ul>
-                    <li><a href="#">電商教室</a></li>
-                    <li><a href="#">充電工作坊</a></li>
-                    <li><a href="#">DreamBig 創品牌</a></li>
-                    <li><a href="#">電商成長學苑</a></li>
-                    <li><a href="#">LINE 官方帳號</a></li>
-                </ul>
-            </div>
-            <div class="footer-list-col">
-                <h4>應用案例</h4>
-                <ul>
-                    <li><a href="#">實體零售</a></li>
-                    <li><a href="#">O2O 全通路</a></li>
-                    <li><a href="#">社交商務</a></li>
-                    <li><a href="#">社群電商工具包</a></li>
-                </ul>
+        <div class="footer container">
+            <div class="footer-list-group row">
+                <div class="footer-list-col col">
+                    <h4>SHOPLINE</h4>
+                    <ul>
+                        <li><a href="#">關於我們</a></li>
+                        <li><a href="#">認識團隊</a></li>
+                        <li><a href="#">人才招募</a></li>
+                        <li><a href="#">合作機會</a></li>
+                        <li><a href="#">精選夥伴</a></li>
+                        <li><a href="#">媒體報導</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list-col col">
+                    <h4>我要開店</h4>
+                    <ul>
+                        <li><a href="#">方案費用</a></li>
+                        <li><a href="#">功能模組</a></li>
+                        <li><a href="#">客戶案例</a></li>
+                        <li><a href="#">開店說明會</a></li>
+                        <li><a href="#">開店諮詢</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list-col col">
+                    <h4>功能特色</h4>
+                    <ul>
+                        <li><a href="#">網路開店</a></li>
+                        <li><a href="#">社群服務</a></li>
+                        <li><a href="#">零售POS</a></li>
+                        <li><a href="#">電商物流</a></li>
+                        <li><a href="#">訂單管理</a></li>
+                        <li><a href="#">一頁商店</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list-col col">
+                    <h4>開店資源</h4>
+                    <ul>
+                        <li><a href="#">開店秘技</a></li>
+                        <li><a href="#">版型主題</a></li>
+                        <li><a href="#">新手問答</a></li>
+                        <li><a href="#">POS硬體</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list-col col">
+                    <h4>更多解決方案</h4>
+                    <ul>
+                        <li><a href="#">企業旗艦方案</a></li>
+                        <li><a href="#">跨境電商方案</a></li>
+                        <li><a href="#">廣告計畫方案</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list-col col">
+                    <h4>其他資源</h4>
+                    <ul>
+                        <li><a href="#">電商教室</a></li>
+                        <li><a href="#">充電工作坊</a></li>
+                        <li><a href="#">DreamBig 創品牌</a></li>
+                        <li><a href="#">電商成長學苑</a></li>
+                        <li><a href="#">LINE 官方帳號</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list-col col">
+                    <h4>應用案例</h4>
+                    <ul>
+                        <li><a href="#">實體零售</a></li>
+                        <li><a href="#">O2O 全通路</a></li>
+                        <li><a href="#">社交商務</a></li>
+                        <li><a href="#">社群電商工具包</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="covid-19-link">
             <a href="#">COVID-19 應變措施</a>
         </div>
-        <div class="footer-bottom">
-            <div class="footer-bottom-link">
-                <ul>
-                    <li><a href="#">網站地圖</a></li>
-                    <li><a href="#">隱私權政策</a></li>
-                    <li><a href="#">會員條款</a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom-social">
-                <a href="#"><div><i class="fab fa-facebook-f"></i></div></a>
-                <a href="#"><div><i class="fab fa-linkedin-in"></i></div></a>
-                <a href="#"><div><i class="fab fa-instagram"></i></div></a>
-                <a href="#"><div><i class="fab fa-youtube"></i></div></a>
-                <a href="#"><div><i class="far fa-comment-dots"></i></div></a>
-                <a href="#"><div><i class="far fa-envelope"></i></div></a>
-            </div>
-            <div class="footer-bottom-copyright">
-                服務時間 星期一至五 上午 10 點至晚上 7 點<br>© Copyright 2013-21 SHOPLINE Limited.                
+        <div class="footer-bottom container">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="footer-bottom-social col">
+                    <a href="#"><div><i class="fab fa-facebook-f"></i></div></a>
+                    <a href="#"><div><i class="fab fa-linkedin-in"></i></div></a>
+                    <a href="#"><div><i class="fab fa-instagram"></i></div></a>
+                    <a href="#"><div><i class="fab fa-youtube"></i></div></a>
+                    <a href="#"><div><i class="far fa-comment-dots"></i></div></a>
+                    <a href="#"><div><i class="far fa-envelope"></i></div></a>
+                </div>
+                <div class="footer-bottom-link col">
+                    <ul>
+                        <li><a href="#">網站地圖</a></li>
+                        <li><a href="#">隱私權政策</a></li>
+                        <li><a href="#">會員條款</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-copyright col">
+                    服務時間 星期一至五 上午 10 點至晚上 7 點<br>© Copyright 2013-21 SHOPLINE Limited.
+                </div>
             </div>
         </div>
     </footer>
