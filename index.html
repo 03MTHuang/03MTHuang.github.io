@@ -10,24 +10,30 @@
 
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             list-style: none;
         }
-        .item-group{
+
+        .container {
             width: 960px;
             margin: auto;
         }
-        h1{
+
+        h1 {
             background-color: sandybrown;
-            padding: 10px 10px;
+            padding: 10px 0;
             text-align: center;
         }
-        /* .item{
+
+        .item-group {
             display: flex;
-        } */
-        .item a{
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        a {
             display: inline-block;
             text-decoration: none;
             font-size: 18px;
@@ -36,7 +42,8 @@
             padding: 10px 30px;
             margin: 5px 0;
         }
-        a:hover{
+
+        a:hover {
             background-color: rgb(245, 221, 116);
         }
 
@@ -49,14 +56,15 @@
 
 
 
-    <div class="item-group">
+    <div class="container">
         <h1>Lab</h1>
-        <div class="item">
+        <div class="item-group">
             <a href="HW01-Line/Line.html">Line切版</a>
             <a href="HW02-schoolTimetable.html">課表</a>
             <a href="HW03-form/form-practice.html">表單練習1</a>
             <a href="HW03-form/form-appointment.html">表單練習2</a>
             <a href="HW04-SHOPLINE/SHOPLINE.html">SHOPLINE切版</a>
+            <a href="HW04-SHOPLINE/SHOPLINE2.html">SHOPLINE切版(Grid)</a>
         </div>
     </div>
     

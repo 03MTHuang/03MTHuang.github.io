@@ -12,10 +12,25 @@
     <style>
         body {
             padding-top: 60px;
+            font-family: SFPro,Arial,Noto Sans JP,Noto Sans KR,sans-serif;
         }
 
-        div {
-            font-family: SFPro,Arial,Noto Sans JP,Noto Sans KR,sans-serif;
+        .message {
+            width: 60px;
+            height: 60px;
+            background-color: #3493FB;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgb(36 50 66 / 20%);
+            text-align: center;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .message i {
+            color: white;
+            font-size: 30px;
+            margin-top: 17px;
         }
 
         /* header */
@@ -24,33 +39,10 @@
             width: 100%;
             top: 0;
             left: 0;
-            z-index: 1;
-            box-shadow: 0 0 5px rgb(36 50 66 / 20%);
-            background-color: white;
+            z-index: 2;
         }
 
-        .header a {
-            display: inline-block;
-            /* line-height: 150px; */
-            padding: 20px 0;
-            margin-left: 20px;
-        }
-
-        .header img {
-            width: 130px;
-        }
-
-        .header-md {
-            display: none;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            box-shadow: 0 0 5px rgb(36 50 66 / 20%);
-        }
-
-        .header-md-top {
+        .header-top {
             height: 40px;
             background-color: #00142d;
             font-size: 0;
@@ -58,86 +50,291 @@
             padding-right: 40px;
         }
 
-        .header-md-top li {
+        .header-top li {
             display: inline-block;
             padding: 3px 0 3px 20px;
             margin-top: 10px;
         }
 
-        .header-md-top li:first-child {
+        .header-top li:first-child {
             padding-right: 20px;
             border-right: 1px solid #748094;
         }
 
-        .header-md-top a {
+        .header-top a {
             font-size: 14px;
             text-decoration: none;
             color: white;
         }
 
-        .header-md-top a:hover {
+        .header-top a:hover {
             color: #0061FF;
         }
 
-        .header-md-bottom {
+        #menu-check {
+            display: none;
+        }
+
+        .header-bottom {
             background-color: white;
             font-size: 0;
+            box-shadow: 0 0 5px rgb(36 50 66 / 20%);
         }
 
-        .header-md-bottom img {
-            width: 160px;
-        }
+        @media screen and (max-width: 991px) {
+            .header-top, .pc-only {
+                display: none;
+            }
 
-        .header-md-bottom :not(:first-child) {
-            display: inline-block;
-            padding: 30px 10px;
-            font-size: 15px;
-            text-decoration: none;
-            color: #324255;
-            box-sizing: border-box;
-        }
+            .logo {
+                display: inline-block;
+                padding: 20px 0;
+                margin-left: 20px;
+            }
 
-        .header-md-bottom :not(:last-child):hover {
-            color: #0061FF;
-        }
+            .logo img {
+                width: 130px;
+            }
 
-        .header-md-bottom a:nth-child(2) {
-            margin-left: 280px;
-        }
+            .hb {
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin-top: auto;
+                margin-bottom: auto;
+                right: 20px;
+            }
 
-        .header-md-bottom a:first-child {
-            position: absolute;
-            top: 65px;
-            left: 60px;
-        }
+            .hb span {
+                width: 80%;
+                height: 2px;
+                background-color: black;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transform: rotate(0deg);
+            }
 
-        .header-md-bottom a:last-child {
-            padding: 10px 18px;
-            background-color: #0061FF;
-            border-radius: 30px;
-            color: white;
-            font-size: 14px;
-            position: absolute;
-            top: 62px;
-            right: 60px;
-        }
+            .hb :first-child {
+                top: 12px;
+            }
 
-        .header-md-bottom a:last-child:hover, .button:hover {
-            /*header-bottom的免費使用按鈕，層級比樓上低，用.button會沒有作用，只好全打出來*/
-            background-color: #0747a6;
-            color: rgb(216, 216, 216);
-            cursor: pointer;
+            .hb :last-child {
+                bottom: 12px;
+            }
+
+            #menu-check:checked ~ .hb :first-child {
+                top: 0;
+                transform: rotate(45deg);
+            }
+
+            #menu-check:checked ~ .hb :nth-child(2) {
+                opacity: 0;
+            }
+
+            #menu-check:checked ~ .hb :last-child {
+                bottom: 0;
+                transform: rotate(-45deg);
+            }
+
+            #menu-check:checked ~ .menu {
+                right: 0;
+            }
+
+            .menu {
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: white;
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                transition: .5s;
+            }
+
+            .menu a {
+                display: block;
+                width: 80%;
+                margin: auto;
+                padding: 30px 0;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-size: 15px;
+                color: #324255;
+            }
+
+            .menu > :not([class*=btn]) {
+                border-bottom: 1px solid rgb(216, 216, 216);
+            }
+
+            a.btn {
+                width: 80%;
+                text-align: center;
+                padding: 15px 0;
+                margin: 20px auto;
+                color: white;
+                background-color: #0061FF;
+                border: 2px solid #0061FF;
+                border-radius: 30px;
+            }
+
+            a.btn.btn-onlyphone {
+                color: #0061FF;
+                background-color: white;
+            }
+
+            .blk-btn {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                background-color: #00142D;
+                position: absolute;
+                bottom: 0;
+            }
+
+            .blk-btn a {
+                display: inline-block;
+                color: white;
+                background-color: #00142D;
+                width: 50%;
+                padding: 5px 0;
+                margin: 15px 0;
+            }
+
+            .blk-btn a:first-child {
+                border-right: 2px solid #172B4D;
+            }
         }
 
         @media screen and (min-width: 992px) {
             body {
                 padding-top: 115px;
             }
-            .header {
+
+            .logo {
+                position: absolute;
+                top: 63px;
+                left: 4%;
+            }
+
+            .logo img {
+                width: 160px;
+            }
+
+            .hb {
                 display: none;
             }
-            .header-md {
+
+            .menu {
+                margin-left: 22%;
+            }
+
+            .menu > a {
+                display: inline-block;
+                padding: 30px 10px 26px 10px;
+                font-size: 15px;
+                text-decoration: none;
+                color: #324255;
+                box-sizing: border-box;
+            }
+
+            .menu > a:not([class*=btn]) {
+                border-bottom: 4px solid transparent;
+            }
+
+            .menu > a:not([class*=btn]):hover {
+                color: #0061FF;
+                border-bottom-color: #0061FF;
+            }
+
+            .menu > a:first-child:hover + div {
                 display: block;
+            }
+
+            .menu .btn {
+                padding: 10px 18px;
+                background-color: #0061FF;
+                border-radius: 30px;
+                color: white;
+                font-size: 14px;
+                position: absolute;
+                top: 60px;
+                right: 5%;
+            }
+
+            .btn-onlyphone {
+                display: none;
+            }
+            .menu .btn:hover, .btn:hover {
+                /*header-bottom的免費使用按鈕，層級比樓上低，用.button會沒有作用，只好全打出來*/
+                background-color: #0747a6;
+                color: rgb(216, 216, 216);
+                cursor: pointer;
+            }
+
+            .pc-only {
+                width: 595px;
+                background-color: white;
+                color: #324255;
+                padding: 25px;
+                position: absolute;
+                top: 100%;
+                left: 20%;
+                z-index: -1;
+                display: none;
+            }
+
+            .pc-only h4 {
+                font-size: 20px;
+                padding: 10px 0;
+            }
+
+            .pc-only p {
+                font-size: 15px;
+                padding: 10px 0;
+                line-height: 2;
+                color: rgb(124, 123, 123);
+                border-bottom: 1px solid rgb(216, 216, 216);
+            }
+
+            .pc-only .ul-flex {
+                display: flex;
+                justify-content: space-between;
+                
+            }
+
+            .pc-only ul {
+                width: 25%;
+            }
+
+            .pc-only ul li:first-child {
+                font-size: 20px;
+                padding: 20px 0;
+                border-bottom: 1px solid rgb(216, 216, 216);
+            }
+
+            .pc-only ul li:not(:first-child) {
+                padding: 15px 0;
+            }
+
+            .pc-only ul :not(:first-child) a {
+                font-size: 15px;
+                text-decoration: none;
+                padding-bottom: 5px;
+                color: rgb(124, 123, 123);
+            }
+
+            .pc-only ul:hover li:first-child {
+                border-bottom-color: #324255;
+            }
+
+            .pc-only ul :not(:first-child):hover > a {
+                color: #0061FF;
+                border-bottom: 1px solid #0061FF;
             }
         }
 
@@ -157,16 +354,13 @@
 
         .home .row {
             flex-direction: row-reverse;
-        }        
-        /* .home-txt {
-            width: 550px;
-            padding: 50px;
-        } */
+        }
 
         .home-txt h1 {
             font-size: 40px;
             font-weight: bolder;
             color: white;
+            margin-top: 30px;
             margin-bottom: 25px;
         }
 
@@ -185,7 +379,7 @@
             margin-bottom: 50px;
         }
 
-        input {
+        input.input-mail {
             background-color: #00142d;
             color: white;
             outline: none;
@@ -346,8 +540,9 @@
         .service-item p {
             font-size: 15px;
             text-align: left;
-            line-height: 1.5;
+            line-height: 2;
             color: #324255;
+            padding: 0 35px;
         }
 
         .service-item-pic {
@@ -389,19 +584,10 @@
 
         .map-txt {
             padding: 85px 20px;
-        }
-
-        /* .map-txt {
-            width: 60%;
-            padding-left: 50px;
-        } */
-
-        /* .map-pic {
-            width: 40%;
-            height: 100%;
+            /* padding-left: 50px; */
             position: relative;
-            overflow: hidden;
-        } */
+            z-index: 1;
+        }
 
         .map img {
             width: 615px;
@@ -583,32 +769,65 @@
 </head>
 
 <body>
-
-    <nav class="header">
-        <a href="#"><img src="logo.png" alt="SHOPLINE"></a>
-    </nav>
-
-
-    <div class="header-md">
-        <div class="header-md-top">
+    <div class="message"><i class="fas fa-comment-alt"></i></div>
+    <div class="header">
+        <div class="header-top">
             <ul>
                 <li><a href="#"><i class="fas fa-globe"></i></a></li>
                 <li><a href="#">幫助中心</a></li>
                 <li><a href="#">登入網店</a></li>
             </ul>
         </div>
-        <nav class="header-md-bottom">
-            <a href="#"><img src="logo.png" alt="SHOPLINE"></a>
-            <a href="#">開店服務</a>
-            <a href="#">方案費用</a>
-            <a href="#">客戶案例</a>
-            <a href="#">開店說明會</a>
-            <a href="#">開店諮詢</a>
-            <a href="#">更多解決方案</a>
-            <a href="#">其他資源</a>
-            <a href="#" class="button">免費試用</a>
-        </nav>
+        <div class="header-bottom">
+            <input type="checkbox" id="menu-check">
+            <a href="#" class="logo"><img src="logo.png" alt="SHOPLINE"></a>
+            <label class="hb" for="menu-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <nav class="menu">
+                <a href="#">開店服務</a>
+                <div class="pc-only">
+                    <h4>想在哪開店？</h4>
+                    <p>我們提供一應俱全的全通路開店服務，從社群、網店到實體零售門市，<br>都能依據品牌的需求、預算來彈性選配，一站讓你輕鬆開店！</p>
+                    <div class="ul-flex">
+                        <ul>
+                            <li>網路開店</li>
+                            <li><a href="#">功能介紹</a></li>
+                            <li><a href="#">版型主題</a></li>
+                            <li><a href="#">開店秘技</a></li>
+                            <li><a href="#">新手問答</a></li>
+                        </ul>
+                        <ul>
+                            <li>社群購物</li>
+                            <li><a href="#">功能介紹</a></li>
+                            <li><a href="#">新手問答</a></li>
+                        </ul>
+                        <ul>
+                            <li>零售POS</li>
+                            <li><a href="#">功能介紹</a></li>
+                            <li><a href="#">週邊硬體</a></li>
+                            <li><a href="#">新手問答</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#">方案費用</a>
+                <a href="#">客戶案例</a>
+                <a href="#">開店說明會</a>
+                <a href="#">開店諮詢</a>
+                <a href="#">更多解決方案</a>
+                <a href="#">其他資源</a>
+                <a href="#" class="btn">免費試用</a>
+                <a href="#" class="btn btn-onlyphone">登入網站</a>
+                <div class="blk-btn btn-onlyphone ">
+                    <a href="#">開店諮詢</a>
+                    <a href="#">開店說明會</a>
+                </div>
+            </nav>
+        </div>
     </div>
+
 
 
     <div class="home">
@@ -622,8 +841,8 @@
                     <h2>社群購物貼近顧客零距離</h2>
                     <p>超過 25 萬品牌使用！從個人賣家到國際品牌，都能以 SHOPLINE 實現全通路零售，快速拓展市場到世界各地，輕鬆開始你的『 店 』商生意！</p>
                     <form action="">
-                        <input type="email" placeholder="請在此輸入電子信箱(可隨時更換)">
-                        <button type="submit" class="button">免費試用</button>
+                        <input class="input-mail" type="email" placeholder="請在此輸入電子信箱(可隨時更換)">
+                        <button type="submit" class="btn">免費試用</button>
                     </form>
                 </div>
             </div>
@@ -741,13 +960,11 @@
 
 
     <div class="map">
-
-                <div class="map-txt">
-                    <h4>全亞洲超過<br>250,000 個品牌都在使用 SHOPLINE</h4>
-                    <a href="#" class="button">免費試用14天</a>
-                </div>
-                <img src="global.png" alt="地球">
-
+        <div class="map-txt">
+            <h4>全亞洲超過<br>250,000 個品牌都在使用 SHOPLINE</h4>
+            <a href="#" class="btn">免費試用14天</a>
+        </div>
+        <img src="global.png" alt="地球">
     </div>
 
 
