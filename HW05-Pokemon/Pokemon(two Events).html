@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列表</h1>
+    <button class="btn1">載入寶可夢圖鑑列表(第二種註冊事件)</button>
+    <button class="btn2">載入寶可夢圖鑑列表(第三種註冊事件)</button>
+    <button class="btn3">清除</button>
+    
+    <div id='container'></div>
+
+    <script>
+        let btn1 = document.querySelector(".btn1");
+        let btn2 = document.querySelector(".btn2");
+        let btn3 = document.querySelector(".btn3");
+        let container = document.getElementById('container');
+
+        window.onload = function(){
+            container.innerHTML = "";
+        }
+
+        function displayPokemon(){
+            for(let i = 1; i < 890; i++){
+                let fileName = i.toString().padStart(3, "0");
+                let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                
+                //Create <img>
+                let img = document.createElement("img");
+                img.setAttribute("src", pathFile);
+
+                //加入DOM Tree
+                container.appendChild(img);                
+            }
+        }
+
+        btn1.onclick = displayPokemon;
+
+        btn2.addEventListener("click", displayPokemon);
+
+        btn3.addEventListener("click", function(){
+            container.innerHTML = "";
+        })
+
+    </script>
+</body>
+
+</html>

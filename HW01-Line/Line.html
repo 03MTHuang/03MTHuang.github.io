@@ -6,61 +6,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
 
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             list-style: none;
         }
-        .item-group{
+        body {
+            padding-top: 70px;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: white;
+            border-bottom: 1px solid #777;
+            opacity: .95;
+            width: 100%;
+            height: 70px;
+            text-align: center;
+        }
+        .a-left, .a-center, .a-right {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-family: SFPro,Arial,Noto Sans JP,Noto Sans KR,sans-serif;
+        }
+        .a-left {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            font-size: 20px;
+        }
+        .a-center {
+            display: inline-block;
+            margin: 24px 35px 0;
+            font-size: 14px;
+        }
+        .a-right {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 14px;
+        }
+        .a-right:hover + ul {
+            display: block;
+        }
+        .menu-lang {
+            position: absolute;
+            display: none;
+            border: 1px solid #777;
+            background-color: white;
+            opacity: .95;
+            padding: 10px 20px;
+            top: 50px;
+            right: 11px;            
+        }
+        .menu-lang li {
+            padding: 5px 0;
+        }
+        .menu-lang a {
+            text-decoration: none;
+            color: #777;
+            font-weight: bold;
+            font-size: 13px;
+            font-family: SFPro,Arial,Noto Sans JP,Noto Sans KR,sans-serif;
+        }
+        .item-group {
             width: 1160px;
             margin: auto;
             /* border: 10px solid #0000;? */
         }
-        .item{
+        .item {
             display: flex;
             align-items: center;
             padding: 50px 0;
             /* border:1px solid rgb(146, 43, 5); */
         }
-        .item:nth-child(odd){
+        .item:nth-child(odd) {
             flex-direction: row-reverse;
             align-items: flex-start;
         }
-        .pic{
+        .pic {
             width: 580px;
-            /* border:1px solid coral; */
+            border:1px solid coral;
         }
-        .pic img{
+        .pic img {
             width: 100%;
             vertical-align: middle;
         }
-        .txt{
+        .txt {
             width: 480px;
             padding: 20px 50px;
-            /* border:1px solid cornflowerblue; */
+            border:1px solid cornflowerblue;
         }
-        .txt img{
+        .txt img {
             border-radius: 20%;
             width: 70px;
             margin-bottom: 15px;
         }
-        .txt h3{
+        .txt h3 {
             font-size: 40px;
             color: #1e1e1e;
             line-height: 1.5;
             margin-bottom: 15px;
             font-family: SFPro,Arial,Noto Sans JP,Noto Sans KR,sans-serif;
         }
-        .txt h4{
+        .txt h4 {
             font-size: 18px;
             color: #07b53b;
             margin-bottom: 10px;
         }
-        .txt p{
+        .txt p {
             font-size: 17px;
             color: #777;
             line-height: 1.5;
@@ -68,7 +129,7 @@
             font-family: SFPro,Arial,Noto Sans JP,Noto Sans KR,sans-serif;
             font-weight: bold;
         }
-        .txt a{
+        .txt a {
             display: inline-block;
             padding: 15px 20px;
             border: 1px solid rgba(0,0,0,.15);
@@ -77,8 +138,9 @@
             text-decoration: none;
             color: black;
             font-size: 13px;
+            font-weight: bold;
         }
-        .txt a:hover{
+        .txt a:hover {
             background-color: #07b53b;
             color: white;
         }
@@ -88,6 +150,24 @@
 </head>
 
 <body>
+
+
+    <nav>
+        <a href="#" class="a-left">LINE</a>
+        <a href="#" class="a-center">Life on LINE</a>
+        <a href="#" class="a-center">通訊軟體</a>
+        <a href="#" class="a-center">服務總覽</a>
+        <a href="#" class="a-right"><i class="fas fa-globe"></i>TW</a>
+        <ul class="menu-lang">
+            <li><a href="#">EN</a></li>
+            <li><a href="#">JP</a></li>
+            <li><a href="#">KR</a></li>
+            <li><a href="#">TW</a></li>
+            <li><a href="#">TH</a></li>
+            <li><a href="#">ID</a></li>
+        </ul>
+    </nav>
+
 
 
     <div class="item-group">
@@ -100,7 +180,7 @@
                 <h3>LINE TODAY</h3>
                 <h4>隨點隨看 生活快充</h4>
                 <p>最即時的新聞、影音、運動賽事和娛樂內容直播，讓你話題永不斷線，LINE TODAY陪伴您的每一天！</p>
-                <a href="#"><b>其他詳細資訊</b></a>
+                <a href="#">其他詳細資訊</a>
             </div>
         </div>
         <div class="item">
@@ -111,10 +191,12 @@
                 <img src="SmallLinePost.png">
                 <h3>LINE貼文串</h3>
                 <h4>探索樂趣，分享生活</h4>
-                <p>在貼文串追蹤你的最愛．有感內容不錯過。<br/>
-                    打造你的個人閱知頻道，探索生活大小事。<br/>
-                    分享所見所聞，串連人際、啟發創意的無限可能！</p>
-                <a href="#"><b>其他詳細資訊</b></a>
+                <p>
+                    在貼文串追蹤你的最愛．有感內容不錯過。<br>
+                    打造你的個人閱知頻道，探索生活大小事。<br>
+                    分享所見所聞，串連人際、啟發創意的無限可能！
+                </p>
+                <a href="#">其他詳細資訊</a>
             </div>
         </div>
         <div class="item">
@@ -126,7 +208,7 @@
                 <h3>LINE Pay</h3>
                 <h4>先LINE購物再購物</h4>
                 <p>涵蓋各大購物、拍賣、精品、通路、旅遊、及票券商店，輕鬆貨比五百家，一站比價三千萬筆商品，再享LINE POINTS回饋賺不停！</p>
-                <a href="#"><b>其他詳細資訊</b></a>
+                <a href="#">其他詳細資訊</a>
             </div>
         </div>
         <div class="item">
@@ -138,7 +220,7 @@
                 <h3>LINE購物</h3>
                 <h4>隨點隨看 生活快充</h4>
                 <p>最即時的新聞、影音、運動賽事和娛樂內容直播，讓你話題永不斷線，LINE TODAY陪伴您的每一天！</p>
-                <a href="#"><b>其他詳細資訊</b></a>
+                <a href="#">其他詳細資訊</a>
             </div>
         </div>
         <div class="item">
@@ -150,7 +232,7 @@
                 <h3>LINE TV</h3>
                 <h4>共享追劇生活</h4>
                 <p>和朋友一起追劇，不錯過最新、最熱門、最潮的話題大劇，即時分享娛樂影音，展開精彩生活故事，LINE TV是您的追劇第一選擇！</p>
-                <a href="#"><b>其他詳細資訊</b></a>
+                <a href="#">其他詳細資訊</a>
             </div>
         </div>
 

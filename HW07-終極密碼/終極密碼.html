@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .range {
+            width: 250px;
+            height: 30px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 25px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+        .create-number {
+            color: black;
+            /* background-color: wheat; */
+            /* border: 1px solid black; */
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .guess {
+            width: 150px;
+            height: 30px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 20px;
+            margin: auto;
+            margin-bottom: 15px;
+        }
+        .btn-group {
+            width: 120px;
+            margin: auto;
+        }
+        .btn-group button {
+            width: 35px;
+            margin-bottom: 4px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="range"></div>
+        <button class="create-number">產生數字</button>
+        <div class="guess"></div>
+        <div class="btn-group">
+            <button disabled class="number">1</button>
+            <button disabled class="number">2</button>
+            <button disabled class="number">3</button>
+            <button disabled class="number">4</button>
+            <button disabled class="number">5</button>
+            <button disabled class="number">6</button>
+            <button disabled class="number">7</button>
+            <button disabled class="number">8</button>
+            <button disabled class="number">9</button>
+            <button disabled class="clear">X</button>
+            <button disabled class="number">0</button>
+            <button disabled class="sent">V</button>
+        </div>
+    </div>
+
+    <script>
+        let btn_create = document.querySelector(".create-number");
+        let range = document.querySelector(".range");
+        let min = 0;
+        let max = 100;
+        let answer;
+        //產生數字按鍵功能，開始遊戲
+        btn_create.addEventListener("click", function(){
+            answer = getRandom(99);
+            openSmallBtns(small_btns);
+            range.innerText = `${min}~${max}`;
+        })
+        //產生亂數
+        function getRandom(x){
+            return Math.floor(Math.random()*x)+1;
+        }
+
+        let small_btns = document.querySelectorAll(".btn-group button");
+        //打開按鍵
+        function openSmallBtns(small_btns){
+            small_btns.forEach(item=>{
+                item.removeAttribute("disabled");
+            })
+        }
+
+        let btn_numbers = document.querySelectorAll(".number");
+        let guess = document.querySelector(".guess");
+        //數字鍵功能
+        btn_numbers.forEach(item=>{
+            item.addEventListener("click", function(){
+                addNumber(item);
+            })
+        })
+        //輸入數字
+        function addNumber(btn){
+            guess.innerText += btn.innerText;
+        }
+
+
+        let btn_sent = document.querySelector(".sent");
+        //送出鍵功能：檢查答案 + 清除輸入框 + 重設範圍
+        btn_sent.addEventListener("click", function(){
+            checkAnswer();
+            guess.innerText = "";
+        })
+
+        //檢查答案
+        function checkAnswer(){
+            if(guess.innerText == answer){
+                alert(`猜中了！遊戲結束`);
+                lockSmallBtns();
+                range.innerText = "";
+                min = 0;
+                max = 100;
+            }
+            else{
+                changeRange(guess.innerText);
+            }
+        }
+        //鎖住按鍵
+        function lockSmallBtns(){
+            small_btns.forEach(item=>{
+                item.setAttribute("disabled", "");
+            })
+        }
+
+        //重新顯示數字範圍，再猜一遍
+        function changeRange(num){
+            if(num < answer){
+                min = num;
+            }
+            else{
+                max = num;
+            }
+            range.innerText = `${min}~${max}`;
+        }
+
+        //清除鍵功能：清除輸入框
+        let btn_clear = document.querySelector(".clear");
+        btn_clear.addEventListener("click", function(){
+            guess.innerText = "";
+        })
+
+    </script>
+</body>
+</html>
