@@ -150,6 +150,7 @@
                     </div>
                 </div>
                 <div class="continue p-4 position-relative">
+                    <div class="cover position-absolute top-0 start-0 w-100 bg-white"></div>
                     <span class="d-block display-price fs-2 fw-bolder mb-3"></span>
                     <button type="button" class="btn btn-primary fw-bolder shopbag">加入購物車</button>
                 </div>
@@ -228,11 +229,13 @@
             //Wi-Fi
             wifi.addEventListener("click", function(){
                 _network = "Wi-Fi";
+                cover[2].remove();
                 showPrice();
             })
             //Cellular
             cellular.addEventListener("click", function(){
                 _network = "Cellular";
+                cover[2].remove();
                 showPrice();
             })
 
