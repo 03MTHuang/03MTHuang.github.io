@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>融合版</title>
+    <style>
+        .fa-apple,
+        .nav-link {
+            color: #c5c5c5;
+            transition: .3s;;
+        }
+        .fa-apple:hover,
+        .nav-link:hover {
+            color: white;
+        }
+        .hb {
+            width: 40px;
+        }
+        .hb span {
+            width: 70%;
+            height: 2px;
+            background-color: white;
+        }
+        .hb span:first-child {
+            top: 35%;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .hb span:last-child {
+            top: 65%;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .header.container,
+        .menu.container {
+            max-width: 1000px;
+        }
+        .header-background {
+            box-shadow: 0 0 2px rgb(36 50 66 /90%);
+            z-index: 1;
+        }
+        .shop {
+            width: 95%;
+        }
+        .display-img img {
+            top: 2rem;
+        }
+        label {
+            cursor: pointer;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 7px;
+        }
+        .color-img {
+            width: 15%;
+        }
+        label:hover {
+            border-color: #aaa;
+        }
+        input:checked + label {
+            border: 2px solid #0071e3;
+            padding: 14px;
+        }
+        input:checked + .color-label,
+        input:checked + .storage-label,
+        input:checked + .ipad-network-label {
+            border: 2px solid #0071e3;
+            padding: 23px 14px;
+        }
+        .text p {
+            font-weight: bolder;
+            margin-top: 15px;
+        }
+        p.new {
+            font-size: 15px;
+            color: #bf4800;
+            margin-top: 50px;
+        }
+        p.intro {
+            font-size: 15px;
+            color: rgb(110, 110, 110);
+        }
+        .type-name span:nth-child(2),
+        .color-label span,
+        .storage-price,
+        .size span:nth-child(2),
+        .watch-network span:nth-child(2) {
+            font-size: 10px;
+            color: rgb(110, 110, 110);
+        }
+        .color-label,
+        .storage-label,
+        .ipad-network-label {
+            width: 49%;
+            padding: 24px 15px;
+        }
+        .continue {
+            background-color: #fbfbfd;
+            text-align: center;
+        }
+        .shopbag {
+            transition: none;
+            padding: 4px 60px;
+        }
+        .cover {
+            height: calc(100% + 1px);
+            opacity: .5;
+        }
+        @media screen and (min-width:992px){
+            .shop {
+                width: 75%;
+            }
+            .continue {
+                text-align: left;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="menu w-100 bg-dark">
+        <div class="menu container">
+            <div class="row justify-content-between align-items-center">
+                <a href="#" class="col"><i class="fab fa-apple fs-5 py-2"></i></a>
+                <ul class="nav col justify-content-end">
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link cr-iPhone" href="#">iPhone</a>
+                    </li>
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link cr-iPad" href="#">iPad</a>
+                    </li>
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link cr-Watch" href="#">Watch</a>
+                    </li>
+                    <li class="nav-item position-relative d-md-none">
+                        <a class="btn btn-dark hb h-100" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span class="position-absolute"></span>
+                            <span class="position-absolute"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+        <ul class="bg-dark list-unstyled my-0">
+            <li class="nav-item w-75 m-auto border-bottom">
+                <a class="nav-link cr-iPhone" href="#">iPhone</a>
+            </li>
+            <li class="nav-item w-75 m-auto border-bottom">
+                <a class="nav-link cr-iPad" href="#">iPad</a>
+            </li>
+            <li class="nav-item w-75 m-auto">
+                <a class="nav-link cr-Watch" href="#">Watch</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="header-background position-sticky top-0 w-100 bg-white"></div>
+    <div class="shop container"></div>
+
+    <!-- iphone -->
+    <template id="label-iphone-type">
+        <input type="radio" id="" name="type" class="d-none">
+        <label for="" class="d-flex align-items-center mb-2">
+            <div class="col-7 type-name px-2">
+                <span class="fw-bolder fs-6 d-block"></span>
+                <span class="d-block"></span>
+            </div>
+            <span class="col-5 text-end px-2"></span>
+        </label>
+    </template>
+
+    <template id="label-looks">
+        <input type="radio" id="" name="color" class="d-none">
+        <label for="" class="color-label text-center mb-2">
+            <div class="text-center mb-1">
+                <img src="" class="color-img">
+            </div>
+            <span></span>
+        </label>
+    </template>
+
+    <template id="label-iphone-storage">
+        <input type="radio" id="" name="storage" class="d-none">
+        <label for="" class="storage-label mb-2 text-center">
+            <span class="d-block text-center fs-4 fw-bolder"></span>
+            <span class="storage-price"></span>
+        </label>
+    </template>
+
+
+    <!-- iPad -->
+    <!-- <template id="label-looks">
+        <input type="radio" id="" name="color" class="d-none">
+        <label for="" class="color-label text-center mb-2">
+            <div class="text-center mb-1">
+                <img src="" class="color-img">
+            </div>
+            <span></span>
+        </label>
+    </template> -->
+
+    <template id="label-iPad-storage"> 
+        <input type="radio" id="" name="storage" class="d-none">
+        <label for="" class="storage-label mb-2 text-center">
+            <span class="d-block text-center fs-4 fw-bolder"></span></span>
+        </label>
+    </template>
+
+    <template id="label-iPad-network">
+        <input type="radio" id="" name="network" class="d-none">
+        <label for="" class="ipad-network-label mb-2 text-center">
+            <span class="d-block text-center fs-6 fw-bolder"></span>
+        </label>
+    </template>
+
+    <!-- Watch -->
+    <!-- <template id="label-looks">
+        <input type="radio" id="" name="color" class="d-none">
+        <label for="" class="color-label text-center mb-2">
+            <div class="text-center mb-1">
+                <img src="" class="color-img">
+            </div>
+            <span></span>
+        </label>
+    </template> -->
+
+    <template id="label-watch-size">
+        <input type="radio" id="" name="size" class="d-none">
+        <label for="" class="d-flex align-items-center mb-2">
+            <div class="col-7 size px-2">
+                <span class="fw-bolder fs-6 d-block"></span>
+                <span class="d-block"></span>
+            </div>
+            <span class="col-5 text-end px-2"></span>
+        </label>
+    </template>
+
+    <template id="label-watch-network">
+        <input type="radio" id="" name="network" class="d-none">
+        <label for="" class="d-flex align-items-center mb-2">
+            <div class="col-7 watch-network px-2">
+                <span class="fw-bolder fs-6 d-block"></span>
+                <span class="d-block"></span>
+            </div>
+            <span class="col-5 text-end px-2 network-price"></span>
+        </label>
+    </template>
+
+
+    
+    <script src="Apple_products.js"></script>
+    <script type="module">
+        import { $g, $c, $ce } from "/helpers.js";
+
+        let cr_iPhone = $g(".cr-iPhone");
+        let cr_iPad = $g(".cr-iPad");
+        let cr_Watch = $g(".cr-Watch");
+        let div_shop = $g(".shop");
+        let div_headerbcg = $g(".header-background");
+
+        cr_iPhone.forEach(item=>{
+            item.addEventListener("click", function(){
+                createiPhone();
+            })
+        })
+        cr_iPad.forEach(item=>{
+            item.addEventListener("click", function(){
+                createiPad();
+            })
+        })
+        cr_Watch.forEach(item=>{
+            item.addEventListener("click", function(){
+                createWatch();
+            })
+        })
+
+        function createiPhone(){
+            div_headerbcg.innerText = "";
+            div_shop.innerText = "";
+            let div_header = $c("div");
+            div_header.setAttribute("class", "header container");
+            let div_headerrow = $c("div");
+            div_headerrow.setAttribute("class", "row justify-content-between align-items-center");
+            let span_title = $ce("span", "iPhone 12 Pro");
+            span_title.setAttribute("class", "title col fs-5 fw-bolder py-2");
+            let span_headerprice = $ce("span", "NT$33,900 起");
+            span_headerprice.setAttribute("class", "header-price col text-end");
+            div_headerrow.append(span_title, span_headerprice);
+            div_header.append(div_headerrow);
+            div_headerbcg.append(div_header);
+
+            let p_sm = $ce("p", "全新");
+            p_sm.setAttribute("class", "new mb-0 text-center d-md-none");
+            let h1_sm = $ce("h1", "購買 iPhone 12 Pro");
+            h1_sm.setAttribute("class", "mb-3 text-center d-md-none fw-bolder");
+            let div_row = $c("div");
+            div_row.setAttribute("class", "row");
+            let div_displayimg = $c("div");
+            div_displayimg.setAttribute("class", "display-img col-12 col-md-6");
+            let img_phone = $c("img");
+            img_phone.setAttribute("src", "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000");
+            img_phone.setAttribute("class", "w-100 position-sticky");
+            div_displayimg.append(img_phone);
+            let div_text = $c("div");
+            div_text.setAttribute("class", "text col-12 col-md-6");
+            let p = $ce("p", "全新");
+            p.setAttribute("class", "new mb-0 d-none d-md-block");
+            let h1 = $ce("h1", "購買 iPhone 12 Pro");
+            h1.setAttribute("class", "mb-5 d-none d-md-block fw-bolder");
+            let div_type = $c("div");
+            div_type.setAttribute("class", "choose-type pb-4 border-bottom");
+            let p_type = $ce("p", "選擇機型");
+            div_type.append(p_type);
+            let label_type = $g("#label-iphone-type");
+            let type_arr = [
+                { type:"pro-type", title:"iPhone 12 Pro", description:"6.1吋顯示器", price:"NT$33,900 起"},
+                { type:"promax-type", title:"iPhone 12 Pro Max", description:"6.7吋顯示器", price:"NT$37,900 起"}
+            ]
+            type_arr.forEach(item=>{
+                let cloneContent = label_type.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.type;
+                cloneContent.querySelector("label").setAttribute("for", item.type);
+                cloneContent.querySelector(".col-7 span:nth-child(1)").innerText = item.title;
+                cloneContent.querySelector(".col-7 span:nth-child(2)").innerText = item.description;
+                cloneContent.querySelector("label > span").innerText = item.price;
+                div_type.append(cloneContent);
+            })
+            let div_looks = $c("div");
+            div_looks.setAttribute("class", "choose-looks pb-4 mb-4 border-bottom position-relative");
+            let cover1 = $c("div");
+            cover1.setAttribute("class", "cover position-absolute top-0 start-0 w-100 bg-white");
+            let p_color = $ce("p", "選擇外觀");
+            let div_flex1 = $c("div");
+            div_flex1.setAttribute("class", "d-flex justify-content-between flex-wrap");
+            let div_flex2 = div_flex1.cloneNode(true);
+            let label_looks = $g("#label-looks");
+            let looks_arr = [
+                { name:"石墨色", color:"graphite", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-finish-graphite-2020?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=80&amp;.v=1601054548000"},
+                { name:"銀色", color:"silver", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-finish-silver-2020?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=80&amp;.v=1601054548000"},{name:"金色", color:"gold", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-finish-gold-2020?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=80&amp;.v=1601054548000"},
+                {name:"太平洋藍色", color:"blue", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-finish-blue-2020?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=80&amp;.v=1601054547000"}
+            ];
+            looks_arr.forEach(item=>{
+                let cloneContent = label_looks.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.color;
+                cloneContent.querySelector("label").setAttribute("for", item.color);
+                cloneContent.querySelector("img").src = item.imgurl;
+                cloneContent.querySelector("span").innerText = item.name;
+                div_flex1.append(cloneContent);
+            })
+            div_looks.append(cover1, p_color, div_flex1);
+            let div_storage = $c("div");
+            div_storage.setAttribute("class", "choose-storage pb-4 mb-4 position-relative");
+            let cover2 = cover1.cloneNode(true);
+            let p_storage = $ce("p", "選擇儲存容量");
+            let label_storage = $g("#label-iphone-storage");
+            let storage_arr = [
+                { storage:"GB128", num:"128", price:"NT$33,900起"},
+                { storage:"GB256", num:"256", price:"NT$37,400起"},
+                { storage:"GB512", num:"512", price:"NT$44,400起"}
+            ]
+            storage_arr.forEach(item=>{
+                let cloneContent = label_storage.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.storage;
+                cloneContent.querySelector("label").setAttribute("for", item.storage);
+                cloneContent.querySelectorAll("span")[0].innerHTML = `${item.num}<span class="fs-6">GB</span>`;
+                cloneContent.querySelectorAll("span")[2].innerText = item.price;
+                div_flex2.append(cloneContent);
+            })
+            div_storage.append(cover2, p_storage, div_flex2);
+            let div_continue = $c("div");
+            div_continue.setAttribute("class", "continue p-4 position-relative");
+            let span_continue = $c("span");
+            span_continue.setAttribute("class", "d-block display-price fs-2 fw-bolder mb-3");
+            let btn_continue = $ce("button", "加入購物車");
+            btn_continue.setAttribute("type", "button");
+            btn_continue.setAttribute("class", "btn btn-primary fw-bolder shopbag");
+            let cover3 = cover1.cloneNode(true);
+            div_continue.append(cover3, span_continue, btn_continue);
+
+            div_text.append(p, h1, div_type, div_looks, div_storage, div_continue);
+            div_row.append(div_displayimg, div_text);
+            div_shop.append(p_sm, h1_sm, div_row);
+
+
+
+
+
+
+
+            let pro_type = document.querySelector("#pro-type");
+            let promax_type = document.querySelector("#promax-type");
+            let type_array = [pro_type, promax_type];
+            let graphite = document.querySelector("#graphite");
+            let silver = document.querySelector("#silver");
+            let gold = document.querySelector("#gold");
+            let blue = document.querySelector("#blue");
+            let color_array = [graphite, silver, gold, blue];
+            let GB128 = document.querySelector("#GB128");
+            let GB256 = document.querySelector("#GB256");
+            let GB512 = document.querySelector("#GB512");
+            let storage_array = [GB128, GB256, GB512];
+            let header_price = document.querySelector(".header-price");
+            let storage_128 = document.querySelectorAll(".storage-price")[0];
+            let storage_256 = document.querySelectorAll(".storage-price")[1];
+            let storage_512 = document.querySelectorAll(".storage-price")[2];
+            let show_price = document.querySelector(".display-price");
+            let cover = document.querySelectorAll(".cover");
+            let _name, _color, _storage;
+
+
+            
+            //iphone 12 pro
+            pro_type.addEventListener("click", function(){
+                _name = "pro";
+            })
+            //iphone 12 pro max
+            promax_type.addEventListener("click", function(){
+                _name = "promax";
+            })
+            type_array.forEach(item=>{
+                item.addEventListener("click", function(){
+                    showPrice(_name, _storage);
+                    changePhoneImg(_name, _color);             
+                    cover[0].remove();
+                })
+            })
+            function changePhoneImg(_name, _color){
+                let obj;
+                if(typeof _color == "undefined"){
+                    obj = iphone12pro.basepicture.find(item => item.name == _name);
+                }else{
+                    obj = iphone12pro.picture.find(item => item.name == _name && item.color == _color)
+                }
+                img_phone.setAttribute("src", obj.url);
+            }
+            
+            //石墨色
+            graphite.addEventListener("click", function(){
+                _color = "graphite";
+            })
+            //銀色
+            silver.addEventListener("click", function(){
+                _color = "silver";
+            })
+            //金色
+            gold.addEventListener("click", function(){
+                _color = "gold";
+            })
+            //藍色
+            blue.addEventListener("click", function(){
+                _color = "blue";
+            })
+            color_array.forEach(item=>{
+                item.addEventListener("click", function(){
+                    changePhoneImg(_name, _color);
+                    cover[1].remove();
+                })
+            })
+
+            //容量128GB
+            GB128.addEventListener("click", function(){
+                _storage = "128GB";
+            })
+            //容量256GB
+            GB256.addEventListener("click", function(){
+                _storage = "256GB";
+            })
+            //容量512GB
+            GB512.addEventListener("click", function(){
+                _storage = "512GB";
+            })
+            storage_array.forEach(item=>{
+                item.addEventListener("click", function(){
+                    showPrice(_name, _storage);
+                    cover[2].remove();
+                })
+            })
+            function showPrice(_name, _storage){
+                let obj_128 = iphone12pro.type.find(item => item.name == _name && item.storage == "128GB")
+                let obj_256 = iphone12pro.type.find(item => item.name == _name && item.storage == "256GB")
+                let obj_512 = iphone12pro.type.find(item => item.name == _name && item.storage == "512GB")
+                storage_128.innerText = `NT$${toCur(obj_128.price)}`;
+                storage_256.innerText = `NT$${toCur(obj_256.price)}`;
+                storage_512.innerText = `NT$${toCur(obj_512.price)}`;
+                if(typeof _storage == "undefined"){
+                    header_price.innerText = `NT$${toCur(obj_128.price)} 起`;
+                }else{
+                    let obj = iphone12pro.type.find(item => item.name == _name && item.storage == _storage)
+                    header_price.innerText = `NT$${toCur(obj.price)}`;
+                    show_price.innerText = `NT$${toCur(obj.price)}`;
+                }
+            }
+        }
+
+        function createiPad(){
+            div_headerbcg.innerText = "";
+            div_shop.innerText = "";
+            let h1_sm = $ce("h1", "購買 iPad Air");
+            h1_sm.setAttribute("class", "mt-5 mb-3 text-center d-md-none fw-bolder");
+            let div_row = $c("div");
+            div_row.setAttribute("class", "row");
+            let div_displayimg = $c("div");
+            div_displayimg.setAttribute("class", "display-img col-12 col-md-6");
+            let img_phone = $c("img");
+            img_phone.setAttribute("src", "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-air-select-202009?wid=886&hei=1070&fmt=jpeg&qlt=80&.v=1599066777000");
+            img_phone.setAttribute("class", "w-100 position-sticky");
+            div_displayimg.append(img_phone);
+            let div_text = $c("div");
+            div_text.setAttribute("class", "text col-12 col-md-6");
+            let h1 = $ce("h1", "購買 iPad Air");
+            h1.setAttribute("class", "mt-5 mb-5 d-none d-md-block fw-bolder");
+            let div_looks = $c("div");
+            div_looks.setAttribute("class", "choose-looks pb-4 mt-5 mb-4 border-bottom");
+            let p_color = $ce("p", "外觀");
+            let div_flex1 = $c("div");
+            div_flex1.setAttribute("class", "d-flex justify-content-between flex-wrap");
+            let div_flex2 = div_flex1.cloneNode(true);
+            let div_flex3 = div_flex1.cloneNode(true);
+            let label_looks = $g("#label-looks");
+            let looks_arr = [
+                { name:"太空灰色", color:"gray", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/finish-spacegray-201903?wid=204&amp;hei=204&amp;fmt=png-alpha&amp;.v=1552422652805"},
+                { name:"銀色", color:"silver", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/finish-silver-201903?wid=204&amp;hei=204&amp;fmt=png-alpha&amp;.v=1552422655664"},{name:"玫瑰金色", color:"rose", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/finish-gold-202009?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=80&amp;.v=1599240136000"},
+                { name:"綠色", color:"green", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/finish-green-202009?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=80&amp;.v=1599240136000"},{name:"天藍色", color:"blue", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/finish-blue-202009?wid=204&amp;hei=204&amp;fmt=png-alpha&amp;.v=1599240136000"}
+            ];
+            looks_arr.forEach(item=>{
+                let cloneContent = label_looks.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.color;
+                cloneContent.querySelector("label").setAttribute("for", item.color);
+                cloneContent.querySelector("img").src = item.imgurl;
+                cloneContent.querySelector("span").innerText = item.name;
+                div_flex1.append(cloneContent);
+            })
+            div_looks.append(p_color, div_flex1);
+            let div_storage = $c("div");
+            div_storage.setAttribute("class", "choose-storage pb-4 mb-4 border-bottom");
+            let p_storage = $ce("p", "儲存裝置");
+            let label_storage = $g("#label-iPad-storage");
+            let storage_arr = [
+                { storage:"GB64", num:"64"},
+                { storage:"GB256", num:"256"}
+            ]
+            storage_arr.forEach(item=>{
+                let cloneContent = label_storage.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.storage;
+                cloneContent.querySelector("label").setAttribute("for", item.storage);
+                cloneContent.querySelector("label > span").innerHTML = `${item.num}<span class="fs-6">GB</span>`;
+                div_flex2.append(cloneContent);
+            })
+            div_storage.append(p_storage, div_flex2);
+            let div_network = $c("div");
+            div_network.setAttribute("class", "choose-network pb-4 mb-4");
+            let p_network = $ce("p", "連線能力");
+            let label_network = $g("#label-iPad-network");
+            let network_arr = [
+                { network:"Wi-Fi", title:"Wi-Fi"},
+                { network:"Cellular", title:"Wi-Fi + 行動網路"}
+            ]
+            network_arr.forEach(item=>{
+                let cloneContent = label_network.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.network;
+                cloneContent.querySelector("label").setAttribute("for", item.network);
+                cloneContent.querySelector("span").innerText = item.title;
+                div_flex3.append(cloneContent);
+            })
+            div_network.append(p_network, div_flex3);
+            let div_continue = $c("div");
+            div_continue.setAttribute("class", "continue p-4");
+            let span_continue = $c("span");
+            span_continue.setAttribute("class", "d-block display-price fs-2 fw-bolder mb-3");
+            let btn_continue = $ce("button", "加入購物車");
+            btn_continue.setAttribute("type", "button");
+            btn_continue.setAttribute("class", "btn btn-primary fw-bolder shopbag");
+            div_continue.append(span_continue, btn_continue);
+
+            div_text.append(h1, div_looks, div_storage, div_network, div_continue);
+            div_row.append(div_displayimg, div_text);
+            div_shop.append(h1_sm, div_row);
+
+
+            let gray = document.querySelector("#gray");
+            let silver = document.querySelector("#silver");
+            let rose = document.querySelector("#rose");
+            let green = document.querySelector("#green");
+            let blue = document.querySelector("#blue");
+            let color_array = [gray, silver, rose, green, blue];
+            let GB64 = document.querySelector("#GB64");
+            let GB256 = document.querySelector("#GB256");
+            let wifi = document.querySelector("#Wi-Fi");
+            let cellular = document.querySelector("#Cellular");
+            let show_price = document.querySelector(".display-price");
+            let _color, _storage, _network;
+
+
+        
+            function changePhoneImg(_color){
+                let obj = iPadAir.find(item=>item.color == _color)
+                img_phone.setAttribute("src", obj.picture);
+            }
+            
+            //太空灰色
+            gray.addEventListener("click", function(){
+                _color = "gray";
+            })
+            //銀色
+            silver.addEventListener("click", function(){
+                _color = "silver";
+            })
+            //玫瑰金色
+            rose.addEventListener("click", function(){
+                _color = "rose";
+            })
+            //綠色
+            green.addEventListener("click", function(){
+                _color = "green";
+            })
+            //天藍色
+            blue.addEventListener("click", function(){
+                _color = "blue";
+            })
+            color_array.forEach(item=>{
+                item.addEventListener("click", function(){
+                    changePhoneImg(_color);
+                    showPrice();
+                })
+            })
+
+            //容量64GB
+            GB64.addEventListener("click", function(){
+                _storage = "64GB";
+                showPrice();
+            })
+            //容量256GB
+            GB256.addEventListener("click", function(){
+                _storage = "256GB";
+                showPrice();
+            })
+            
+            //Wi-Fi
+            wifi.addEventListener("click", function(){
+                _network = "Wi-Fi";
+                showPrice();
+            })
+            //Cellular
+            cellular.addEventListener("click", function(){
+                _network = "Cellular";
+                showPrice();
+            })
+
+            function showPrice(){
+                if(typeof _color != "undefined" && typeof _storage != "undefined" && typeof _network != "undefined"){
+                    let obj = iPadAir.filter(item => item.color == _color && item.storage == _storage && item.network == _network)[0]
+                    show_price.innerText = `NT$${toCur(obj.price)}`;
+                }
+            }
+        }
+
+        function createWatch(){
+            div_headerbcg.innerText = "";
+            div_shop.innerText = "";
+            let h1_sm_1 = $ce("h1", "Apple Watch");
+            h1_sm_1.setAttribute("class", "mt-5 mb-0 text-center d-md-none fs-5 fw-bolder");
+            let h1_sm_2 = $ce("h1", "銀色鋁金屬錶殼；編織單圈錶環");
+            h1_sm_2.setAttribute("class", "mb-3 text-center d-md-none fs-3 fw-bolder");
+            let div_row = $c("div");
+            div_row.setAttribute("class", "row");
+            let div_displayimg = $c("div");
+            div_displayimg.setAttribute("class", "display-img col-12 col-md-6");
+            let img_phone = $c("img");
+            img_phone.setAttribute("src", "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MJX03ref_VW_34FR+watch-40-alum-silver-cell-6s_VW_34FR_WF_CO_GEO_TW+watch-face-40-6s-pride_VW_34FR_WF_CO?wid=1400&hei=1400&trim=1,0&fmt=p-jpg&qlt=95&.v=1619841295000,1601921879000,1620834614000");
+            img_phone.setAttribute("class", "w-100 position-sticky");
+            div_displayimg.append(img_phone);
+
+            let div_text = $c("div");
+            div_text.setAttribute("class", "text col-12 col-md-6");
+            let h1_1 = $ce("h1", "Apple Watch");
+            h1_1.setAttribute("class", "mt-5 mb-0 d-none d-md-block fs-5 fw-bolder");
+            let h1_2 = $ce("h1", "銀色鋁金屬錶殼；編織單圈錶環");
+            h1_2.setAttribute("class", "mb-5 d-none d-md-block fs-3 fw-bolder");
+            let p_1 = $ce("p", "鋁金屬錶殼身形輕盈，採用 100% 再生航太等級合金材質製成。");
+            p_1.setAttribute("class", "intro");
+            let p_2 = $ce("p", "編織單圈錶環採用再生紗繩與矽膠線編織而成，無錶扣無扣環的延展性設計，配戴超舒適。");
+            p_2.setAttribute("class", "intro mb-5");
+            let div_looks = $c("div");
+            div_looks.setAttribute("class", "choose-looks pb-4 mb-4 border-bottom");
+            let p_color = $ce("p", "錶帶顏色");
+            let div_flex = $c("div");
+            div_flex.setAttribute("class", "d-flex justify-content-between flex-wrap");
+            let label_looks = $g("#label-looks");
+            let looks_arr = [
+                { name:"彩虹版", color:"rainbow", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MJX93ref_SW_COLOR?wid=64&hei=64&fmt=jpeg&qlt=95&.v=1619808591000"},
+                { name:"木炭色", color:"black", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MY8L2ref_SW_COLOR?wid=64&hei=64&fmt=jpeg&qlt=80&.v=1611115647000"},{name:"電光橙色", color:"orange", imgurl:"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MJJR3ref_SW_COLOR?wid=64&hei=64&fmt=jpeg&qlt=95&.v=1617215847000"}
+            ];
+            looks_arr.forEach(item=>{
+                let cloneContent = label_looks.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.color;
+                cloneContent.querySelector("label").setAttribute("for", item.color);
+                cloneContent.querySelector("img").src = item.imgurl;
+                cloneContent.querySelector("span").innerText = item.name;
+                div_flex.append(cloneContent);
+            })
+            div_looks.append(p_color, div_flex);
+            let div_size = $c("div");
+            div_size.setAttribute("class", "choose-size pb-4 border-bottom position-relative");
+            let cover = $c("div");
+            cover.setAttribute("class", "cover position-absolute top-0 start-0 w-100 bg-white");
+            let p_size = $ce("p", "錶殼尺寸");
+            let cover1 = cover.cloneNode(true);
+            div_size.append(cover1, p_size);
+            let label_size = $g("#label-watch-size");
+            let size_arr = [
+                { size:"size40", title:"40 公釐", description:"適合手腕圍 130–200 公釐。", price:"NT$14,400 起"},
+                { size:"size44", title:"44 公釐", description:"適合手腕圍 140–220 公釐。", price:"NT$15,400 起"}
+            ]
+            size_arr.forEach(item=>{
+                let cloneContent = label_size.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.size;
+                cloneContent.querySelector("label").setAttribute("for", item.size);
+                cloneContent.querySelector(".col-7 span:nth-of-type(1)").innerText = item.title;
+                cloneContent.querySelector(".col-7 span:nth-of-type(2)").innerText = item.description;
+                cloneContent.querySelector("label > span").innerText = item.price;
+                div_size.append(cloneContent);
+            })
+            let div_network = $c("div");
+            div_network.setAttribute("class", "choose-network pb-4 position-relative");
+            let p_network = $ce("p", "連線能力");
+            let cover2 = cover.cloneNode(true);
+            div_network.append(cover2, p_network);
+            let label_network = $g("#label-watch-network");
+            let network_arr = [
+                { network:"GPS", title:"GPS", description:"可藉由你的 iPhone 在附近範圍內撥接電話和發簡訊。", price:"NT$14,400 起"},
+                { network:"Cellular", title:"GPS + 行動網路", description:"只需 Apple Watch 就能打電話、發簡訊並保持聯繫。", price:"NT$17,400 起"}
+            ]
+            network_arr.forEach(item=>{
+                let cloneContent = label_network.content.cloneNode(true);
+                cloneContent.querySelector("input").id = item.network;
+                cloneContent.querySelector("label").setAttribute("for", item.network);
+                cloneContent.querySelector(".col-7 span:nth-child(1)").innerText = item.title;
+                cloneContent.querySelector(".col-7 span:nth-child(2)").innerText = item.description;
+                cloneContent.querySelector("label > span").innerText = item.price;
+                div_network.append(cloneContent);
+            })
+            let div_continue = $c("div");
+            div_continue.setAttribute("class", "continue p-4 position-relative");
+            let span_continue = $c("span");
+            span_continue.setAttribute("class", "d-block display-price fs-2 fw-bolder mb-3");
+            let btn_continue = $ce("button", "加入購物車");
+            btn_continue.setAttribute("type", "button");
+            btn_continue.setAttribute("class", "btn btn-primary fw-bolder shopbag");
+            let cover3 = cover.cloneNode(true);
+            div_continue.append(cover3, span_continue, btn_continue);
+
+            div_text.append(h1_1, h1_2, p_1, p_2, div_looks, div_size, div_network, div_continue);
+            div_row.append(div_displayimg, div_text);
+            div_shop.append(h1_sm_1, h1_sm_2, div_row);
+
+
+
+            let rainbow = document.querySelector("#rainbow");
+            let black = document.querySelector("#black");
+            let orange = document.querySelector("#orange");
+            let color_array = [rainbow, black, orange];
+            let size40 = document.querySelector("#size40");
+            let size44 = document.querySelector("#size44");
+            let GPS = document.querySelector("#GPS");
+            let cellular = document.querySelector("#Cellular");
+            let GPS_price = document.querySelectorAll(".network-price")[0];
+            let cellular_price = document.querySelectorAll(".network-price")[1];
+            let show_price = document.querySelector(".display-price");
+            let covers = document.querySelectorAll(".cover");
+            let _color, _size, _network;
+
+
+
+            function changePhoneImg(_color){
+                let obj;
+                if(typeof _size == "undefined"){
+                    obj = watch.picture.find(item => item.color == _color)
+                }else{
+                    obj = watch.picture.find(item => item.size == _size && item.color == _color)
+                }
+                img_phone.setAttribute("src", obj.url);
+            }
+
+            //彩虹版
+            rainbow.addEventListener("click", function(){
+                _color = "rainbow";
+            })
+            //木炭色
+            black.addEventListener("click", function(){
+                _color = "black";
+            })
+            //電光橙色
+            orange.addEventListener("click", function(){
+                _color = "orange";
+            })
+            color_array.forEach(item=>{
+                item.addEventListener("click", function(){
+                    changePhoneImg(_color);
+                    covers[0].remove();
+                })
+            })
+
+            //40公釐
+            size40.addEventListener("click", function(){
+                _size = "40";
+                showPrice();
+                changePhoneImg(_color);
+                covers[1].remove();
+            })
+            //44公釐
+            size44.addEventListener("click", function(){
+                _size = "44";
+                showPrice();
+                changePhoneImg(_color);
+                covers[1].remove();
+            })
+
+            //GPS
+            GPS.addEventListener("click", function(){
+                _network = "GPS";
+                covers[2].remove();
+                showPrice();
+            })
+            //Cellular
+            cellular.addEventListener("click", function(){
+                _network = "Cellular";
+                covers[2].remove();
+                showPrice();
+            })
+
+            function showPrice(){
+                let obj_GPS = watch.type.find(item => item.size == _size && item.network == "GPS")
+                let obj_cellular = watch.type.find(item => item.size == _size && item.network == "Cellular")
+                GPS_price.innerText = `NT$${toCur(obj_GPS.price)}`;
+                cellular_price.innerText = `NT$${toCur(obj_cellular.price)}`;
+                if(typeof _network != "undefined"){
+                    let obj = watch.type.find(item => item.size == _size && item.network == _network)
+                    show_price.innerText = `NT$${toCur(obj.price)}`;
+                }
+            }
+        }
+
+
+        function toCur(num){
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }        
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
