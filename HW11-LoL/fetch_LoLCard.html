@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch_LoLCard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <style>
+        .card {
+            border: 1px solid black;
+            margin-bottom: 30px;
+            overflow: hidden;
+            background-color: #ffbf67;
+        }
+
+        .card-title {
+            color: white;
+            background-color: black;
+            display: inline-block;
+            border-radius: 5px;
+            padding: 5px 15px 5px 15px;
+        }
+
+        .card-footer {
+            background-color: transparent;
+        }
+
+        .card:hover {
+            box-shadow: 8px 8px 15px #808080;
+            transform: translate(5px, 5px);
+            background-color: lightgreen !important;
+        }
+
+        .card:hover img {
+            transform: scale(1.2);
+            transition: transform 0.5s;
+        }
+
+        .card:not(:hover) img {
+            transform: scale(1, 1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-title {
+            color: black;
+            background-color: white !important;
+        }
+
+        #description {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container-fluid'>
+        <div class='jumbotron bg-success'>
+            <h1 class="text-center">LoL英雄聯盟圖鑑</h1>
+        </div>
+
+        <div class='row'>
+
+        </div>
+    </div>
+
+
+    <template id='cardLoL'>
+        <div class="card" style="width: 18rem;">
+            <img src="" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>               
+            </div>
+            <div class="card-footer border-0">
+                <button href="#" class="btn btn-primary mr-1 description" data-toggle="modal" data-target="#exampleModal">詳細</button>
+                <button href="#" class="btn btn-danger video" disabled="true">影片</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="LoLImage" src="" class="w-100">
+                    <h1 id="description" class="text-dark"></h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="abc"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let url = 'https://ddragon.leagueoflegends.com/cdn/10.22.1/data/zh_TW/champion.json';
+        let championsObject = {};
+        let namesArray = [];
+        let row;
+
+        window.onload = function(){
+            row = document.querySelector(".row");
+            let cardLoL = document.querySelector("#cardLoL");
+
+            fetch(url)
+                .then(response=>response.json())
+                .then(result=>{
+                    championsObject = result.data;
+                    namesArray = Object.keys(championsObject);
+                    setCard();
+                })
+                .catch(ex=>{
+                    console.log(ex);
+                })
+                .finally();
+        }
+        function setCard(){
+            namesArray.forEach((name, index)=>{
+                let cloneCard = cardLoL.content.cloneNode(true);
+                cloneCard.querySelector("img").src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name}_0.jpg`;
+                cloneCard.querySelector("h5").innerText = `${index + 1}：${name}-${championsObject[name].name}`;
+                cloneCard.querySelector("p").innerText = championsObject[name].blurb;
+                row.append(cloneCard);
+            })
+
+            let btns_description = document.querySelectorAll(".description");
+            btns_description.forEach((btn, index)=>{
+                btn.addEventListener("click", function(){
+                    changeModal(index);
+                })
+            })
+        }
+        
+        function changeModal(index){
+            let name = namesArray[index];
+            let modal = document.querySelector(".modal");
+            modal.querySelector("h5").innerText = `${name}-${championsObject[name].name}`;
+            modal.querySelector("img").src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name}_0.jpg`;
+            modal.querySelector("h1").innerHTML = `HP：${championsObject[name].stats.hp}<br>Move Speed：${championsObject[name].stats.movespeed}<br>Armor：${championsObject[name].stats.armor}<br>Spell Block：${championsObject[name].stats.spellblock}<br>Attack Range：${championsObject[name].stats.attackrange}`;
+        }
+
+    </script>
+</body>
+
+</html>
