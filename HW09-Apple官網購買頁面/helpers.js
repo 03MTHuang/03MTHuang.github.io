@@ -25,4 +25,4 @@ function $ce(element, text){
 }
 
 
-export { $g, $c, $ce };
+// export { $g, $c, $ce };
