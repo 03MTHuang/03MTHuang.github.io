@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>威力彩</title>
+    <style>
+        .container {
+          max-width: 900px;
+          text-align: center;
+        }
+        .block {
+          width: 900px;
+          height: 310px;
+          margin: auto;
+          position: relative;
+          word-spacing: -4px;
+        }
+        h1 {
+          text-align: center;
+          font-weight: bolder;
+          color: #ED4A4B;
+        }
+        .track::before {
+          content: "";
+          width: 200px;
+          height: 200px;
+          background-color: rgb(151, 151, 151);
+          border-radius: 4px;
+          position: absolute;
+          left: -100px;
+          bottom: 0;
+          z-index: 1;
+        }
+        .track {
+          width: 800px;
+          height: 100px;
+          bottom: 0;
+          left: 100px;
+          background-color: rgb(233, 233, 233);
+          position: absolute;
+          border-radius: 4px;
+          box-shadow: inset 50px 0 50px 20px rgb(187, 187, 187);
+        }
+        [class*=ball] {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: #02bd4a;
+          position: absolute;
+          text-align: center;
+          line-height: 100px;
+          font-size: 40px;
+          color: white;
+          box-shadow: inset -10px -10px 30px rgb(104, 104, 104);
+        }
+        .ball7 {
+          background-color: #ED4A4B;
+        }
+        [class*=ball]::before {
+          content: "";
+          width: 30px;
+          height: 3px;
+          background-color: white;
+          position: absolute;
+          top: 75px;
+          left: 0;
+          right: 0;
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="block my-4">
+      <h1>威力彩</h1>
+      <div class="row justify-content-center">
+        <button type="button" class="btn btn-warning cast col-2 mx-1">開獎!</button>
+        <button type="button" class="btn btn-warning reset col-2 mx-1" disabled>清除</button>
+      </div>
+      <div class="track">
+        <div class="ball1 sec1" style="top: 0; left: 0; transform: rotate(0deg);"></div>
+        <div class="ball2 sec1" style="top: 0; left: 0; transform: rotate(10deg);"></div>
+        <div class="ball3 sec1" style="top: 0; left: 0; transform: rotate(20deg);"></div>
+        <div class="ball4 sec1" style="top: 0; left: 0; transform: rotate(30deg);"></div>
+        <div class="ball5 sec1" style="top: 0; left: 0; transform: rotate(40deg);"></div>
+        <div class="ball6 sec1" style="top: 0; left: 0; transform: rotate(50deg);"></div>
+        <div class="ball7 sec2" style="top: 0; left: 0; transform: rotate(60deg);"></div>
+      </div>
+    </div>
+
+    <div class="container"></div>
+    <template id="table">
+        <table class="table table-bordered">
+          <thead class="table-warning">
+            <th colspan="7">第一區</th>
+            <th>第二區</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-warning">開出順序</td>
+              <td class="sec1-origin"></td>
+              <td class="sec1-origin"></td>
+              <td class="sec1-origin"></td>
+              <td class="sec1-origin"></td>
+              <td class="sec1-origin"></td>
+              <td class="sec1-origin"></td>
+              <td class="sec2-table"></td>
+            </tr>
+            <tr>
+              <td class="table-warning">大小順序</td>
+              <td class="sec1-sort"></td>
+              <td class="sec1-sort"></td>
+              <td class="sec1-sort"></td>
+              <td class="sec1-sort"></td>
+              <td class="sec1-sort"></td>
+              <td class="sec1-sort"></td>
+              <td class="sec2-table"></td>
+            </tr>
+          </tbody>
+        </table>
+    </template>
+    
+    
+    <script>
+      let btn_cast = document.querySelector(".cast");
+      let btn_reset = document.querySelector(".reset");
+      let track = document.querySelector(".track");
+      let balls = document.querySelectorAll("[class*=ball]");
+      let sec1 = document.querySelectorAll(".sec1");
+      let sec2 = document.querySelector(".sec2");
+      let sec1number;
+      let sec1number_sort;
+      let sec2number;
+      let container = document.querySelector(".container");
+
+      //產生號碼
+      function getNumber(){
+        sec1number = [];
+        sec1number_sort = [];
+        while(sec1number.length !== 6){
+          sec1number.push(Math.floor(Math.random()*38 + 1));
+          sec1number = sec1number.filter(function(item, index){
+              return sec1number.indexOf(item) === index;
+          })
+        }
+        sec1number.forEach(item=>sec1number_sort.push(item));
+        sec1number = sec1number.map(item=>item.toString().padStart(2, '0'));
+        sec1number_sort.sort((a, b)=>a-b);
+        sec1number_sort = sec1number_sort.map(item=>item.toString().padStart(2, '0'));
+        sec2number = Math.floor(Math.random()*8 + 1).toString().padStart(2, '0');
+      }
+
+      // 開獎按鈕
+      btn_cast.addEventListener("click", function(){
+        this.setAttribute("disabled", "");
+        getNumber();
+        sec1number.forEach((item, index)=>{
+          sec1[index].innerText = item;
+        })
+        sec2.innerText = sec2number;
+
+        let num = -8;
+        balls.forEach((ball, index)=>{
+          num += 8 - index;
+          setTimeout(function(){
+            move(ball, index)
+            rotate(ball, index);
+            }, 400 * num)
+        })
+
+        setTimeout(function(){
+          createTable();
+          btn_reset.removeAttribute("disabled");
+        }, 400 * (num + 2));
+      })
+
+      // 再開一次按鈕
+      btn_reset.addEventListener("click", function(){
+        this.setAttribute("disabled", "");
+        btn_cast.removeAttribute("disabled");
+        container.innerText = "";
+        balls.forEach(item=>{
+          item.style.left = "0px";
+        })
+      })
+
+      // 彩球移動
+      function move(ball, index){
+        let timer = setInterval(()=>{
+          ball.style.left = parseInt(ball.style.left) + 1 + "px";
+          if(parseInt(ball.style.left) >= 700 - index * 100) clearInterval(timer);
+        }, 4);
+      }
+
+      // 彩球滾動
+      function rotate(ball, index){
+        let deg = 0;
+        let timer = setInterval(()=>{
+          deg += 360 / (100 * Math.PI);
+          ball.style.transform = `rotate(${deg}deg)`;
+          if(parseInt(ball.style.left) >= 700 - index * 100) clearInterval(timer);
+        }, 4);
+      }
+
+      // 產生表格
+      function createTable(){
+        let table = document.querySelector("#table");
+        let cloneContent = table.content.cloneNode(true);
+        let sec1_origin = cloneContent.querySelectorAll(".sec1-origin");
+        let sec1_sort = cloneContent.querySelectorAll(".sec1-sort");
+        let sec2_table = cloneContent.querySelectorAll(".sec2-table");
+        sec1number.forEach((item, index)=>{
+          sec1_origin[index].innerText = item;
+        })
+        sec1number_sort.forEach((item, index)=>{
+          sec1_sort[index].innerText = item;
+        })
+        sec2_table.forEach(item=> {
+          item.innerText = sec2number;
+        });
+        container.append(cloneContent);
+      }
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>

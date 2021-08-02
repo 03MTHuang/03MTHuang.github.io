@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>紅包賀詞</title>
+    <style>
+        .phrase div {
+            color: #aaa;
+            background-color: #ccc;
+            border: 1px solid #aaa;
+            text-align: center;
+            padding: 10px 5px;
+            font-size: 18px;
+            transition: .2s;
+        }
+        div.active {
+            color: black;
+            background-color: rgb(255, 230, 0);
+        }
+        span {
+            font-size: 30px;
+            height: 45px;
+            vertical-align: middle;
+            align-self: center;
+        }
+        h1 {
+            margin-bottom: 0;
+        }
+        .final {
+            height: 50px;
+            align-self: center;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row phrase">
+            <div class="col-1">百年好合</div>
+            <div class="col-1">永浴愛河</div>
+            <div class="col-1">神仙眷屬</div>
+            <div class="col-1">新婚誌喜</div>
+            <div class="col-1">相親相愛</div>
+            <div class="col-1">永結同心</div>
+            <div class="col-1">才子佳人</div>
+            <div class="col-1">愛情永固</div>
+            <div class="col-1">天作之合</div>
+            <div class="col-1">心心相印</div>
+            <div class="col-1">螽斯衍慶</div>
+            <div class="col-1">鴻案相莊</div>
+            <div class="col-1">如鼓琴瑟</div>
+            <div class="col-1">花開並蒂</div>
+            <div class="col-1">赤繩繫足</div>
+            <div class="col-1">琴瑟和鳴</div>
+            <div class="col-1">相敬如賓</div>
+            <div class="col-1">同德同心</div>
+            <div class="col-1">鳳凰于飛</div>
+            <div class="col-1">美滿家庭</div>
+            <div class="col-1">鸞鳳和鳴</div>
+            <div class="col-1">白頭偕老</div>
+            <div class="col-1">瓜瓞延綿</div>
+            <div class="col-1">情投意合</div>
+            <div class="col-1">宜室宜家</div>
+            <div class="col-1">佳偶天成</div>
+            <div class="col-1">百年琴瑟</div>
+            <div class="col-1">百年偕老</div>
+            <div class="col-1">珠聯璧合</div>
+            <div class="col-1">天緣巧合</div>
+            <div class="col-1">美滿良緣</div>
+            <div class="col-1">郎才女貌</div>
+            <div class="col-1">良緣夙締</div>
+            <div class="col-1">花開富貴</div>
+            <div class="col-1">五世其昌</div>
+            <div class="col-1">于飛之樂</div>
+            <div class="col-1">同德同心</div>
+            <div class="col-1">詩詠關睢</div>
+            <div class="col-1">魚水相諧</div>
+            <div class="col-1">天生一對</div>
+            <div class="col-1">乾坤和樂</div>
+            <div class="col-1">燕爾新婚</div>
+            <div class="col-1">燕侶雙儔</div>
+            <div class="col-1">紅葉詩題</div>
+            <div class="col-1">鳳翥龍翔</div>
+            <div class="col-1">甜蜜佳緣</div>
+            <div class="col-1">兩情相悅</div>
+            <div class="col-1">有情成眷</div>
+            <div class="col-1">詩詠好逑</div>
+            <div class="col-1">樂賦唱隨</div>
+            <div class="col-1">連理交枝</div>
+            <div class="col-1">鐘鼓樂之</div>
+            <div class="col-1">鴛鴦比翼</div>
+            <div class="col-1">海燕雙棲</div>
+            <div class="col-1">乾坤定奏</div>
+            <div class="col-1">笙磬同音</div>
+            <div class="col-1">琴耽瑟好</div>
+            <div class="col-1">琴瑟在御</div>
+            <div class="col-1">琴瑟友之</div>
+            <div class="col-1">玉樹瓊枝</div>
+        </div>
+        <div class="row justify-content-between mt-2">
+            <h1 class="col-4">紅包<br>要寫什麼賀詞？</h1>
+            <span class="col-1 text-end"></span>
+            <h1 class="final col-2"></h1>
+            <span class="col-1"></span>
+            <div class="col-2"></div>
+            <button type="button" class="btn btn-warning start col-1 m-3 fs-4">開始</button>
+        </div>
+    </div>
+
+    <script>
+        let phrases = document.querySelectorAll(".phrase div");
+        let btn_start = document.querySelector(".start");
+        let sequence, step = 60, allSteps, speed, current = 0;
+        let final_text = document.querySelector(".final");
+        let text = document.querySelectorAll("span");
+
+        //產生亂數的陣列
+        function getSequence(){
+            sequence = [];
+            while(sequence.length !== 60){
+                sequence.push(Math.floor(Math.random()*60));
+                sequence = sequence.filter(function(item, index){
+                    return sequence.indexOf(item) === index;
+                })
+            }
+        }
+
+        // 按鈕：開始 + 重來功能
+        btn_start.addEventListener("click", function(){
+            if(step <= 0){
+                init();
+            }
+            this.setAttribute("disabled", "");
+            getSequence();
+            step = 60;
+            allSteps = step;
+            speed = 130;
+            turnAround();
+        })
+        
+        // 閃爍
+        function turnAround(){
+            phrases[sequence[current]].classList.remove("active");
+            current++;
+            if(current >= phrases.length) current = 0; //為了讓第一項也有閃到必須這麼寫，且最終答案其實是第一項
+            phrases[sequence[current]].classList.add("active");
+            step--;
+            if(step > 0){
+                setTimeout(turnAround, speed);
+                if(step < Math.floor((allSteps / 3))) speed += 15;
+            }else{
+                setTimeout(createText, speed);
+            }
+        }
+
+        // 產生結果的文字
+        function createText(){
+            text[0].innerText = "就寫";
+            final_text.innerText = phrases[sequence[current]].innerText;
+            text[1].innerText = "吧！";
+            let color = true;
+            for(let i = 1; i <= 6; i++){
+                setTimeout(()=>{
+                    final_text.style.backgroundColor = color ? "rgb(255, 220, 220)" : "rgb(255, 246, 161)";
+                    color = !color;
+                }, i * 300);
+            }
+            setTimeout(()=>{
+                btn_start.removeAttribute("disabled");
+                btn_start.innerText = "重來";
+            }, 1800);
+        }
+
+        // 初始化
+        function init(){
+            text[0].innerText = "";
+            final_text.innerText = "";
+            text[1].innerText = "";
+            phrases[sequence[current]].style.color = "#aaa";
+            phrases[sequence[current]].style.backgroundColor = "#ccc";
+            final_text.style.backgroundColor = "white";
+        }
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
