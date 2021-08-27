@@ -3,12 +3,17 @@ body {
 }
 img.logo {
   width: 171px;
+  /* height: 38px; */
+}
+/* #region navbar */
+.navbar {
+  z-index: 1030;
 }
 .navbar .navbar-toggler:focus {
   box-shadow: none;
 }
 .navbar .nav-item .fa-user {
-  position: relative;
+  font-size: 15px;
 }
 .navbar .nav-item .fa-user::after {
   content: "";
@@ -18,7 +23,7 @@ img.logo {
   border: 1.5px solid rgba(0,0,0,.55);
   border-radius: 50%;
   top: -4.5px;
-  left: -5.5px;
+  left: -6px;
 }
 .navbar .nav-item .accordion-item {
   background-color: #f8f9fa;
@@ -31,11 +36,11 @@ img.logo {
   padding-top: .5rem;
   padding-bottom: .75rem;
 }
-.navbar .nav-item .accordion-body {
-  padding: 0;
-}
 .navbar .nav-item .accordion-button::after {
-  margin-left: 0;
+  margin-left: 5px;
+  width: .8rem;
+  height: .8rem;
+  background-size: cover;
 }
 .navbar .nav-item .accordion-button:focus {
   border-color: transparent;
@@ -60,6 +65,8 @@ img.logo {
 .navbar .nav-item .dropdown-item {
   padding: .75rem 1rem;
 }
+/* #endregion */
+/* #region footer */
 footer {
   background-color: rgb(0, 0, 0, .7);
 }
@@ -98,6 +105,74 @@ footer .fab {
 footer .social a:hover .fab {
   color: #D9831A;
 }
+/* #endregion */
+/* #region 登入/註冊 */
+.modal-dialog {
+  max-width: 400px;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-body {
+  padding: 0 2rem;
+}
+#a-register-modal, #a-login-modal, #forget-password, #become-lessor {
+  color: #D9831A;
+}
+#a-register-modal:hover, #a-login-modal:hover, #forget-password:hover, #become-lessor:hover {
+  color: #eba755;
+}
+.third-register {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.third-register img {
+  width: 26px;
+}
+.third-register:hover {
+  background-color: rgb(236, 236, 236);
+}
+.email-register-text {
+  color: rgb(153, 153, 153);
+}
+.email-register-text::before, .email-register-text::after {
+  content: "";
+  border-top: 1px solid #ccc;
+  flex-grow: 1;
+}
+.email-register-text::before {
+  margin-right: 20px;
+}
+.email-register-text::after {
+  margin-left: 20px;
+}
+#login-modal input:focus {
+  box-shadow: none;
+  border-color: black;
+}
+#login-submit, #register-submit {
+  padding: 12px 20px;
+  border-radius: 25px;
+  background-color: #D9831A;
+}
+#login-submit:hover, #register-submit:hover {
+  background-color: #eba755;
+}
+.modal-footer .fa-dollar-sign {
+  font-size: 36px;
+}
+.modal-footer .fa-dollar-sign::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #6c757d;
+  border-radius: 50%;
+  top: -8px;
+  left: -15px;
+}
+/* #endregion */
 @media screen and (min-width: 768px) {
   footer img.logo {
     width: 100%;
@@ -105,6 +180,6 @@ footer .social a:hover .fab {
 }
 @media screen and (min-width: 992px) {
   body {
-    padding-top: 4.5rem;
+    padding-top: 4.7rem;
   }
 }
