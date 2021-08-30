@@ -1,0 +1,283 @@
+html, body {
+  position: relative;
+  height: 100%;
+}
+/* #region 幻燈片和首頁搜尋列 */
+.homepage-carousel {
+  width: 100%;
+  /* height: 50%; */
+}
+.slide-img-group {
+  height: 45vh;
+}
+.slide-img {
+  opacity: 0;
+  transition: 1s;
+}
+.slide-img:nth-child(1) {
+  background: url(https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80) center center;
+  background-size: cover;
+}
+.slide-img:nth-child(2) {
+  background: url(https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) center center;
+  background-size: cover;
+}
+.slide-img:nth-child(3) {
+  background: url(https://images.unsplash.com/photo-1595329088732-d3b286981166?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80) center center;
+  background-size: cover;
+}
+.slide-img-show {
+  opacity: 1;
+  transition: 1s;
+}
+.homepage-search {
+  background-color: #ccc;
+}
+.form-select {
+  font-size: 16px;
+  cursor: pointer;
+}
+.form-select:focus {
+  box-shadow: none;
+  border: 1px solid #ced4da;
+}
+#homepage-search-submit {
+  background-color: #D9831A;
+}
+#homepage-search-submit:hover {
+  background-color: #eba755;
+}
+/* #endregion */
+
+/* #region Swiper：活動圖片 */
+.swiper {
+  width: 100%;
+}
+.swiper-activity {
+  height: 160px;
+}
+
+.swiper-activity .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  box-shadow: inset 0px -50px 40px rgba(0, 0, 0, .3);
+  border-radius: 2px;
+  transition: .3s;
+}
+.swiper-activity .swiper-slide:hover {
+  opacity: .8;
+  transition: .3s;
+}
+.swiper-activity .swiper-slide-lecture {
+  background: url(https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-party {
+  background: url(https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-meeting {
+  background: url(https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-dinner {
+  background: url(https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-photograph {
+  background: url(https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-announce {
+  background: url(https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-concert {
+  background: url(https://images.unsplash.com/photo-1465847899084-d164df4dedc6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide-exhibition {
+  background: url(https://images.unsplash.com/photo-1563000215-e31a8ddcb2d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=738&q=80) center center;
+  background-size: cover;
+}
+.swiper-activity .swiper-slide span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+}
+[class*="swiper-button"] {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 50%;
+  color: black;
+  text-align: center;
+  margin-top: -15px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  line-height: 30px;
+  font-size: 10px;
+}
+/* #endregion */
+
+/* #region 網站特色*/
+.characteristic-section {
+  background: rgb(236, 236, 236);
+}
+.characteristic-section p {
+  font-size: 18px;
+}
+.icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #D9831A;
+  text-align: center;
+}
+.icon i {
+  font-size: 30px;
+  line-height: 53px;
+  color: white;
+}
+/* #endregion */
+
+/* #region 精選場地 */
+.selected-space img {
+  border-radius: 2px;
+  transition: .3s;
+}
+.selected-space img:hover {
+  opacity: .8;
+  transition: .3s;
+}
+.selected-space [class*="col"] span {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
+  left: calc(var(--bs-gutter-x) * .25);
+  border-radius: 2px;
+}
+.selected-space [class*="col"] .distinct {
+  background-color: rgba(217, 131, 26, .7);
+  color: white;
+  top: 15px;
+  padding: 8px 20px;
+  font-weight: bolder;
+}
+.selected-space [class*="col"] .price {
+  background-color: rgba(255, 255, 255, .5);
+  color: black;
+  top: 60px;
+  padding: 5px 20px;
+}
+/* #endregion */
+
+/* #region 用戶評價 */
+.swiper-comment {
+  height: 300px;
+}
+.swiper-comment .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+
+  color: black;
+  /* background-color: rgb(231, 231, 231); */
+  background-image: linear-gradient(rgb(245, 245, 245), rgb(231, 231, 231));
+  border-radius: 2px;
+}
+.swiper-comment .content {
+  font-size: 16px;
+  overflow: auto;
+}
+.swiper-comment .content::-webkit-scrollbar {
+  width: 5px;
+}
+.swiper-comment .content::-webkit-scrollbar-thumb {
+    background: rgba(170, 170, 170, .7);
+  }
+  .swiper-comment .star {
+    color: #eba755;
+  }
+/* #endregion */
+
+/* #region 場地主介紹 */
+.host-introduction {
+  border: 5px solid rgb(231, 231, 231);
+  max-width: calc(100% - 3.5rem);
+}
+.host-introduction [class*="col"] {
+  max-height: 250px;
+}
+.host-introduction i {
+  color: #049DD9;
+}
+.host-introduction .div-sm-img {
+  width: 50px;
+  height: 50px;
+}
+.host-introduction div.d-md-none span {
+  font-size: 12px;
+}
+/* #endregion */
+
+@media screen and (min-width: 768px) {
+  .homepage-search {
+    bottom: 30px;
+    position: absolute;
+    background-color: transparent;
+  }
+}
+@media screen and (min-width: 992px) {
+  .homepage-carousel {
+    height: 70%;
+  }
+  .slide-img-group {
+    height: 100%;
+  }
+  .homepage-search form div:last-of-type {
+    width: 11%;
+  }
+  .swiper-activity {
+    height: 140px;
+  }       
+  .host-introduction [class*="col"] {
+    max-height: 300px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .swiper-activity {
+    height: 180px;
+  }        
+  .host-introduction [class*="col"] {
+    max-height: 400px;
+  }
+}

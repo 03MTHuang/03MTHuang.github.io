@@ -1,5 +1,15 @@
+html, body {
+  position: relative;
+  height: 100%;
+}
+html::-webkit-scrollbar {
+  width: 5px;
+}
+html::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, .7);
+}
 body {
-  padding-top: 3.3rem;
+  padding-top: 3.8rem;
 }
 img.logo {
   width: 171px;
@@ -8,6 +18,7 @@ img.logo {
 /* #region navbar */
 .navbar {
   z-index: 1030;
+  box-shadow: 0 0 5px rgb(36 50 66 / 20%);
 }
 .navbar .navbar-toggler:focus {
   box-shadow: none;
@@ -69,6 +80,8 @@ img.logo {
 /* #region footer */
 footer {
   background-color: rgb(0, 0, 0, .7);
+  position: sticky;
+  top: 100%;
 }
 footer .container {
   max-width: 1100px;
@@ -107,6 +120,12 @@ footer .social a:hover .fab {
 }
 /* #endregion */
 /* #region 登入/註冊 */
+.modal::-webkit-scrollbar {
+  width: 5px;
+}
+.modal::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, .7);
+}
 .modal-dialog {
   max-width: 400px;
 }
@@ -177,9 +196,22 @@ footer .social a:hover .fab {
   footer img.logo {
     width: 100%;
   }
+  footer p {
+    font-size: 18px;
+  }
+  footer ul {
+    font-size: 16px;
+  }
+  footer span {
+    font-size: 14px;
+  }
 }
 @media screen and (min-width: 992px) {
   body {
-    padding-top: 4.7rem;
+    padding-top: 4.7rem;    
+  }
+  footer {
+    position: sticky;
+    top: calc(100% - 4.7rem);
   }
 }
