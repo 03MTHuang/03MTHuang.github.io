@@ -1,5 +1,4 @@
 html, body {
-  position: relative;
   height: 100%;
 }
 html::-webkit-scrollbar {
@@ -11,112 +10,114 @@ html::-webkit-scrollbar-thumb {
 body {
   padding-top: 3.8rem;
 }
-img.logo {
+.shared-navbar img.logo {
   width: 171px;
   /* height: 38px; */
 }
 /* #region navbar */
-.navbar {
+.shared-navbar {
   z-index: 1030;
-  box-shadow: 0 0 5px rgb(36 50 66 / 20%);
+  border-bottom: 1px solid #eee ;
+  background-color: white;
+  font-size: 18px;
 }
-.navbar .navbar-toggler:focus {
+.shared-navbar .nav-item .nav-link {
+  color: #343840;
+  transition: color 0s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+.shared-navbar .search-link .nav-link {
+  color: #049DD9;
+}
+.shared-navbar .nav-item .nav-link:hover {
+  color: #049DD9;
+}
+.shared-navbar .search-link .nav-link:hover {
+  color: #0077a7;
+}
+.shared-navbar .nav-item .nav-link:hover .fa-user::after {
+  border-color: #049DD9;
+} 
+.shared-navbar .navbar-toggler:focus {
   box-shadow: none;
 }
-.navbar .nav-item .fa-user {
-  font-size: 15px;
+.shared-navbar .nav-item .become-host-link {
+  color: #D9831A;
 }
-.navbar .nav-item .fa-user::after {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  border: 1.5px solid rgba(0,0,0,.55);
-  border-radius: 50%;
-  top: -4.5px;
-  left: -6px;
+.shared-navbar .nav-item .become-host-link:hover {
+  color: #eba755;
 }
-.navbar .nav-item .accordion-item {
+.shared-navbar .nav-item .accordion-item {
   background-color: #f8f9fa;
-  border-color: transparent;
+  border: none;
 }
-.navbar .nav-item .accordion-button {
-  color: rgba(0,0,0,.55);
-  background-color: #f8f9fa;
+.shared-navbar .nav-item .accordion-button {
+  color: #343840;
   justify-content: center;
   padding-top: .5rem;
   padding-bottom: .75rem;
+  font-size: 18px;
 }
-.navbar .nav-item .accordion-button::after {
+.shared-navbar .nav-item .accordion-button::after {
   margin-left: 5px;
   width: .8rem;
   height: .8rem;
   background-size: cover;
 }
-.navbar .nav-item .accordion-button:focus {
+.shared-navbar .nav-item .accordion-button:focus {
   border-color: transparent;
   box-shadow: none;
 }
-.navbar .nav-item .accordion-button:not(.collapsed) {
-  color: rgba(0,0,0,.55);
-  background-color: #f8f9fa;
+.shared-navbar .nav-item .accordion-button:not(.collapsed) {
+  color: #343840;
+  background-color: white;
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
-/* 點下去後，箭頭的圖片沒辦法從藍色換成黑色 */
-/* .nav-item .accordion-button:not(.collapsed)::after {
-  background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);
-} */
-.navbar .nav-item .dropdown-toggle::after {
+.nav-item .accordion-button:not(.collapsed)::after {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.shared-navbar .nav-item .dropdown-toggle::after {
   content: none;
 }
-.navbar .nav-item .dropdown-menu[data-bs-popper] {
+.shared-navbar .nav-item .dropdown-menu[data-bs-popper] {
   top: calc(100% + 1rem);
-  margin-top: .25rem;
 }
-.navbar .nav-item .dropdown-item {
+.shared-navbar .nav-item .dropdown-item {
   padding: .75rem 1rem;
+}
+.shared-navbar .nav-item .dropdown-item:hover {
+  background-color: white;
+  color: #049DD9;
 }
 /* #endregion */
 /* #region footer */
-footer {
-  background-color: rgb(0, 0, 0, .7);
+footer.shared-footer {
+  background-color: rgb(73, 73, 73);
   position: sticky;
   top: 100%;
 }
-footer .container {
+footer.shared-footer .container {
   max-width: 1100px;
 }
-footer p {
-  color: #D9831A;
+footer.shared-footer img.logo {
+  max-width: 190px;
 }
-footer ul {
-  font-size: 13px;
+footer.shared-footer p {
+  color: #049DD9;
+  font-size: 22px;
 }
-footer a {
+footer.shared-footer ul {
+  font-size: 20px;
+}
+footer.shared-footer a {
   text-decoration: none;
   color: #ccc;
 }
-footer a:hover {
+footer.shared-footer a:hover {
   color: white;
 }
-footer span {
+footer.shared-footer span, footer.shared-footer span a {
   color: rgb(134, 134, 134);
-  font-size: 12px;
-}      
-footer .social div {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: rgb(43, 43, 43);
-}
-footer .fab {
-  font-size: 20px;
-  line-height: 36px;
-  color: white;
-}
-footer .social a:hover .fab {
-  color: #D9831A;
+  font-size: 14px;
 }
 /* #endregion */
 /* #region 登入/註冊 */
@@ -126,92 +127,90 @@ footer .social a:hover .fab {
 .modal::-webkit-scrollbar-thumb {
   background: rgba(170, 170, 170, .7);
 }
-.modal-dialog {
-  max-width: 400px;
-}
-.modal-header {
+#login-modal .modal-header, #register-modal .modal-header {
   border-bottom: none;
 }
-.modal-body {
+#login-modal .modal-body, #register-modal .modal-body {
   padding: 0 2rem;
 }
-#a-register-modal, #a-login-modal, #forget-password, #become-lessor {
-  color: #D9831A;
+#a-register-modal, #a-login-modal, #forget-password {
+  color: #049DD9;
 }
-#a-register-modal:hover, #a-login-modal:hover, #forget-password:hover, #become-lessor:hover {
-  color: #eba755;
+#a-register-modal:hover, #a-login-modal:hover, #forget-password:hover {
+  color: #0077a7;
 }
-.third-register {
+#login-modal .third-register, #register-modal .third-register {
   padding: 12px 20px;
-  border-radius: 25px;
+  border-radius: .3rem;
   border: 1px solid #ccc;
 }
-.third-register img {
+#login-modal .third-register img, #register-modal .third-register img {
   width: 26px;
 }
-.third-register:hover {
+#login-modal .third-register:hover, #register-modal .third-register:hover {
   background-color: rgb(236, 236, 236);
 }
-.email-register-text {
+#login-modal .email-register-text, #register-modal .email-register-text {
   color: rgb(153, 153, 153);
 }
-.email-register-text::before, .email-register-text::after {
+#login-modal .email-register-text::before, #register-modal .email-register-text::before, #login-modal .email-register-text::after, #register-modal .email-register-text::after {
   content: "";
   border-top: 1px solid #ccc;
   flex-grow: 1;
 }
-.email-register-text::before {
+#login-modal .email-register-text::before, #register-modal .email-register-text::before {
   margin-right: 20px;
 }
-.email-register-text::after {
+#login-modal .email-register-text::after, #register-modal .email-register-text::after {
   margin-left: 20px;
 }
-#login-modal input:focus {
+.form-control:focus {
   box-shadow: none;
-  border-color: black;
+}
+#login-modal input::placeholder, #register-modal input::placeholder {
+  font-size: 18px;
+  color: #ccc;
+}
+#login-modal input, #register-modal input {
+  font-size: 18px;
+  color: #343840;
+}
+#login-modal input:focus, #register-modal input:focus {
+  box-shadow: 0 0 5px #049DD9;
+  border-color: #049DD9;
 }
 #login-submit, #register-submit {
   padding: 12px 20px;
-  border-radius: 25px;
-  background-color: #D9831A;
+  border-radius: .3rem;
+  background-color: #049DD9;
 }
 #login-submit:hover, #register-submit:hover {
-  background-color: #eba755;
+  background-color: #0077a7;
 }
-.modal-footer .fa-dollar-sign {
-  font-size: 36px;
-}
-.modal-footer .fa-dollar-sign::after {
-  content: "";
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border: 3px solid #6c757d;
-  border-radius: 50%;
-  top: -8px;
-  left: -15px;
+#register-modal form + p {
+  font-size: 14px;
 }
 /* #endregion */
+
+
 @media screen and (min-width: 768px) {
-  footer img.logo {
-    width: 100%;
-  }
-  footer p {
-    font-size: 18px;
-  }
-  footer ul {
-    font-size: 16px;
-  }
-  footer span {
-    font-size: 14px;
-  }
-}
-@media screen and (min-width: 992px) {
   body {
     padding-top: 4.7rem;    
   }
-  footer {
-    position: sticky;
-    top: calc(100% - 4.7rem);
+  footer.shared-footer img.logo {
+    width: 100%;
+    max-width: 230px;
   }
+  footer.shared-footer p {
+    font-size: 19px;
+  }
+  footer.shared-footer ul {
+    font-size: 17px;
+  }
+  footer.shared-footer span {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 992px) {
+  
 }
